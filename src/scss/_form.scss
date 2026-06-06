@@ -1,0 +1,17 @@
+.input {
+    border: 1px solid rgba(56, 40, 25, 0.2);
+    width: 100%;
+    height: 56px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    padding: 0px 11px;
+    &::placeholder {
+        color: rgba(56, 40, 25, 0.25);
+    }
+    @media (max-width: 768px) {
+        height: 30px;
+        font-size: 10px;
+        padding: 0px 8px;
+    }
+}

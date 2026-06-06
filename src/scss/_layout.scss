@@ -1,0 +1,26 @@
+.main-wrapper-outer {
+  width: 100%;
+  min-height: 100%;
+  max-width: var(--main-outer-width);
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  //justify-content: center;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.main {
+  //flex-grow: 1;
+  //flex-shrink: 1;
+}
+
+.container {
+  --bs-gutter-x: 1rem;
+}
+
+.row {
+  --bs-gutter-x: 1rem;
+}

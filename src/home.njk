@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Главная</title>
+    {% include 'blocks/head.njk' %}
+</head>
+
+<body class="preload mp">
+    <div class="main-wrapper-outer">
+        {% include 'blocks/header.njk' %}
+        <main class="main">
+            
+            <div class="block-products row">
+                <a href="./" class="block-products__card card2 col-12 p-0">
+                    <img loading="lazy" src="img/image1.webp" alt="NEW IN" class="block-products__pic desc">
+                    <img loading="lazy" src="img/image2.webp" alt="NEW IN" class="block-products__pic mob">
+                    <div class="block-products__item">
+                        <div class="block-products__text">
+                            Cloth
+                            <span class="text-uppercase">NEW IN</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="block-products row">
+                <a href="./" class="block-products__card col-12 col-sm-6 p-0">
+                    <img loading="lazy" src="img/image3.webp" alt="Socks" class="block-products__pic">
+                    <div class="block-products__item">
+                        <div class="block-products__text">
+                            Cloth
+                            <span class="text-uppercase">Socks</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="./" class="block-products__card col-12 col-sm-6 p-0">
+                    <img loading="lazy" src="img/image4.webp" alt="Stockings" class="block-products__pic">
+                    <div class="block-products__item">
+                        <div class="block-products__text">
+                            Cloth
+                            <span class="text-uppercase">Stockings</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="block-catalog-products">
+                <div class="container">
+                    <div class="block-catalog-products__content">
+                        <h2 class="title2 text-center">All</h2>
+                        <div class="cards-slider swiper">
+                            <div class="swiper-wrapper">
+                                <div class="cards-slider__slide swiper-slide">
+                                    <a href="./" class="card-product">
+                                        <img loading="lazy" src="img/product1.webp" alt="" class="card-product__pic1">
+                                        <div class="card-product__item">
+                                            <div class="card-product__name text-center">
+                                                Name
+                                            </div>
+                                            <div class="card-product__price text-center">
+                                                rub  480
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="cards-slider__slide swiper-slide">
+                                    <a href="./" class="card-product">
+                                        <img loading="lazy" src="img/product2.webp" alt="" class="card-product__pic1">
+                                        <div class="card-product__item">
+                                            <div class="card-product__name text-center">
+                                                Name
+                                            </div>
+                                            <div class="card-product__price text-center">
+                                                rub  480
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="cards-slider__slide swiper-slide">
+                                    <a href="./" class="card-product">
+                                        <img loading="lazy" src="img/product3.webp" alt="" class="card-product__pic1">
+                                        <div class="card-product__item">
+                                            <div class="card-product__name text-center">
+                                                Name
+                                            </div>
+                                            <div class="card-product__price text-center">
+                                                rub  480
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="cards-slider__slide swiper-slide">
+                                    <a href="./" class="card-product">
+                                        <img loading="lazy" src="img/product4.webp" alt="" class="card-product__pic1">
+                                        <div class="card-product__item">
+                                            <div class="card-product__name text-center">
+                                                Name
+                                            </div>
+                                            <div class="card-product__price text-center">
+                                                rub  480
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="./" class="btn-custom">See more</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block-products row">
+                <a href="./" class="block-products__card card2 col-12 p-0">
+                    <img loading="lazy" src="img/image5.webp" alt="Sets" class="block-products__pic desc">
+                    <img loading="lazy" src="img/image6.webp" alt="Sets" class="block-products__pic mob">
+                    <div class="block-products__item">
+                        <div class="block-products__text">
+                            Cloth
+                            <span class="text-uppercase">Sets</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="block-products row">
+                <a href="./" class="block-products__card col-12 col-sm-6 p-0">
+                    <img loading="lazy" src="img/image7.webp" alt="Knee-Highs" class="block-products__pic desc">
+                    <img loading="lazy" src="img/image8.webp" alt="Knee-Highs" class="block-products__pic mob">
+                    <div class="block-products__item">
+                        <div class="block-products__text">
+                            Cloth
+                            <span class="text-uppercase">Knee-Highs</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="./" class="block-products__card col-12 col-sm-6 p-0">
+                    <img loading="lazy" src="img/image9.webp" alt="Tights" class="block-products__pic">
+                    <div class="block-products__item">
+                        <div class="block-products__text">
+                            Cloth
+                            <span class="text-uppercase">Tights</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </main>
+        {% include 'blocks/footer.njk' %}
+    </div>
+    <script src="js/swiper-10.2.0.min.js"></script>
+    {% include 'blocks/scripts.njk' %}
+</body>
+
+</html>
