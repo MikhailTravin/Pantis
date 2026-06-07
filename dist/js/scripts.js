@@ -79,3 +79,18 @@ if (toggler) {
         document.documentElement.classList.toggle('menu-open');
     });
 }
+
+// Добавление к шапке при скролле
+const header = document.querySelector('.header');
+if (header) {
+    function checkScroll() {
+        if (window.scrollY > 0) {
+            header.classList.add('_header-scroll');
+        } else {
+            header.classList.remove('_header-scroll');
+        }
+    }
+
+    checkScroll();
+    window.addEventListener('scroll', checkScroll);
+}

@@ -1,5 +1,9 @@
 .header {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.18) 100%);
+    transition: background-color 0.3s;
+    &._header-scroll {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
     // .header__content
 
     &__content {
