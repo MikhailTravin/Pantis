@@ -243,6 +243,23 @@ body::before {
 .search-open body {
   overflow: hidden;
 }
+.menu-open-nav body {
+  overflow: hidden;
+}
+.menu-open-nav body::before {
+  content: "";
+  pointer-events: auto;
+  opacity: 1;
+}
+.menu-open-nav2 body {
+  overflow: hidden;
+}
+.menu-open-nav2 body::before {
+  content: "";
+  pointer-events: auto;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.4);
+}
 .menu-open body {
   overflow: hidden;
 }
@@ -493,6 +510,14 @@ a {
   opacity: 0.5;
 }
 
+.block-products.main-products {
+  height: 100vh;
+}
+@media (max-width: 992px) {
+  .block-products.main-products {
+    height: 100%;
+  }
+}
 .block-products__card {
   position: relative;
   display: -webkit-box;
@@ -529,9 +554,18 @@ a {
 }
 .block-products__pic {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   -o-object-fit: cover;
      object-fit: cover;
+  min-height: 600px;
+}
+@media (max-width: 992px) {
+  .block-products__pic {
+    height: 100%;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
+  }
 }
 @media (max-width: 450px) {
   .block-products__pic {
@@ -849,35 +883,6 @@ a {
   pointer-events: auto;
 }
 
-.nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 136px;
-}
-@media (max-width: 1400px) {
-  .nav {
-    gap: 50px;
-  }
-}
-
-.nav-link {
-  padding: 0px 0px 0px 0px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 113%;
-  color: var(--color);
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-}
-.nav-link:hover {
-  opacity: 0.7;
-  color: var(--color);
-}
-
 .navbar-toggler-icon {
   width: 14px;
   height: 10px;
@@ -1153,9 +1158,149 @@ a {
   }
 }
 
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 136px;
+}
+@media (max-width: 1400px) {
+  .nav {
+    gap: 50px;
+  }
+}
+
+.nav-link {
+  padding: 0px 0px 0px 0px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 113%;
+  color: var(--color);
+  -webkit-transition: opacity 0.3s, border-bottom 0.3s;
+  transition: opacity 0.3s, border-bottom 0.3s;
+  border-bottom: 1px solid transparent;
+}
+.nav-link:hover {
+  opacity: 0.7;
+  color: var(--color);
+}
+
+.nav-item.nav-item-active .nav-link {
+  border-bottom: 1px solid var(--color);
+}
+.nav-item.nav-item-active .nav-item__dropdown {
+  opacity: 1;
+  pointer-events: auto;
+}
+.nav-item.nav-item-active2 .nav-link {
+  border-bottom: 1px solid var(--color);
+}
+.nav-item .nav-item__dropdown.dropdown2 {
+  opacity: 0;
+  pointer-events: none;
+}
+.nav-item .nav-item__dropdown.dropdown2.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.nav-item__dropdown {
+  position: absolute;
+  top: 100%;
+  padding: 84px 0px;
+  height: calc(100dvh - 100%);
+  width: 100%;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.nav-item__dropdown::-webkit-scrollbar {
+  display: none;
+}
+.nav-item__dropdown.dropdown2 {
+  padding: 100px 0px 50px 0px;
+}
+.nav-item__dropdown.dropdown2 ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+.nav-item__dropdown.dropdown2 ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.nav-item__dropdown.dropdown2 ul li a {
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 120%;
+  text-align: center;
+  border-bottom: 1px solid transparent;
+}
+.nav-item__dropdown.dropdown2 ul li a:hover {
+  border-bottom: 1px solid var(--fanciclub-com-white);
+}
+.nav-item__dropdown ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 80px 124px;
+}
+.nav-item__dropdown ul li a {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  color: var(--color);
+  -webkit-transition: border-bottom 0.3s;
+  transition: border-bottom 0.3s;
+  border-bottom: 1px solid transparent;
+}
+.nav-item__dropdown ul li a:hover {
+  border-bottom: 1px solid var(--color);
+}
+.nav-item__title {
+  font-family: var(--font3);
+  font-weight: 700;
+  font-size: 100px;
+  line-height: 120%;
+  text-align: center;
+  color: var(--fanciclub-com-white);
+  margin-bottom: 60px;
+}
+@media (max-width: 992px) {
+  .nav-item__title {
+    font-size: 32px;
+  }
+}
+
 .accordion {
   --bs-accordion-bg: transparent;
   width: 100%;
+}
+.accordion.hide {
+  display: none;
 }
 
 .accordion-item {
@@ -1234,6 +1379,61 @@ a {
 }
 .accordion-body ul li a:hover {
   border-bottom: 1px solid var(--color);
+}
+
+.accordion-dropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.accordion-dropdown.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.accordion-dropdown ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+.accordion-dropdown ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.accordion-dropdown ul li a {
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 120%;
+  text-align: center;
+  color: var(--fanciclub-com-white);
+  border-bottom: 1px solid transparent;
+}
+.accordion-dropdown ul li a:hover {
+  border-bottom: 1px solid var(--fanciclub-com-white);
+}
+@media (max-width: 992px) {
+  .accordion-dropdown ul li a {
+    font-size: 20px;
+  }
 }
 
 .footer {

@@ -1,4 +1,10 @@
 .block-products {
+    &.main-products {
+        height: 100vh;
+        @media (max-width: 992px) {
+            height: 100%;
+        }
+    }
     // .block-products__card
 
     &__card {
@@ -33,8 +39,13 @@
 
     &__pic {
         width: 100%;
-        height: 100%;
+        height: 100vh;
         object-fit: cover;
+        min-height: 600px;
+        @media (max-width: 992px) {
+            height: 100%;
+            min-height: fit-content;
+        }
         @media (max-width: 450px) {
             max-height: 600px;
         }

@@ -27,6 +27,23 @@ body {
   .search-open & {
     overflow: hidden;
   }
+  .menu-open-nav & {
+    overflow: hidden;
+    &::before {
+      content: "";
+      pointer-events: auto;
+      opacity: 1;
+    }
+  }
+  .menu-open-nav2 & {
+    overflow: hidden;
+    &::before {
+      content: "";
+      pointer-events: auto;
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.4);
+    }
+  }
   .menu-open & {
     overflow: hidden;
     &::before {
