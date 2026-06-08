@@ -7,18 +7,18 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  //justify-content: center;
+  justify-content: center;
   align-items: stretch;
   overflow: hidden;
 }
 
 .main {
-  //flex-grow: 1;
-  //flex-shrink: 1;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .container {
-  --bs-gutter-x: 1rem;
+  --bs-gutter-x: 2rem;
 }
 
 .row {

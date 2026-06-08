@@ -27,6 +27,9 @@ body {
   .search-open & {
     overflow: hidden;
   }
+  .cart-open & {
+    overflow: hidden;
+  }
   .menu-open-nav & {
     overflow: hidden;
     &::before {
@@ -113,5 +116,27 @@ a {
   &:hover,
   &:active {
     background-color: var(--fanciclub-com-cararra);
+  }
+  &.btn-brown {
+    color: var(--color);
+    border-radius: 4px;
+    padding: 6px 12px;
+    min-height: 30px;
+    background-color: var(--pantone-4-c);
+    &:hover,
+    &:active {
+      background-color: var(--color-orange-45);
+    }
+  }
+  &.btn-silver-rust {
+    color: var(--fanciclub-com-white);
+    border-radius: 4px;
+    padding: 6px 12px;
+    min-height: 30px;
+    background-color: var(--fanciclub-com-silver-rust);
+    &:hover,
+    &:active {
+      background-color: var(--color-orange-45);
+    }
   }
 }

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Lookbook</title>
+    {% include 'blocks/head.njk' %}
+</head>
+
+<body class="preload mp">
+    <div class="main-wrapper-outer">
+        <header class="header fixed-top">
+            <div class="container">
+                <div class="header__content d-flex align-items-center g-3 flex-nowrap p0">
+                    <a href="./" class="header__logo">
+                        <img src="img/icons/logo1.svg" alt="">
+                    </a>
+                    <div class="menu">
+                        <div class="header-button header-button-burger">
+                            <button class="navbar-toggler navbar-expand-lg" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#mobileMenu">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                        <!-- Десктопное меню (горизонтальное)-->
+                        <nav class="d-none d-lg-block">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <div class="nav-link nav-link-click" href="./">SHOP</div>
+                                    <div class="nav-item__dropdown">
+                                        <ul>
+                                            <li><a href="./">New In</a></li>
+                                            <li><a href="./">Socks</a></li>
+                                            <li><a href="./">Stockings</a></li>
+                                            <li><a href="./">Knee-Highs</a></li>
+                                            <li><a href="./">Tights</a></li>
+                                            <li><a href="./">Sets</a></li>
+                                            <li><a href="./">All</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="nav-link nav-link-click active" href="./">WORLD</div>
+                                    <div class="nav-item__dropdown">
+                                        <ul>
+                                            <li><a data-id="campaign" href="./" class="nav-link-click2">Campaign</a>
+                                            </li>
+                                            <li><a href="./" class="active">Lookbook</a></li>
+                                        </ul>
+                                    </div>
+                                    <div data-id="campaign" class="nav-item__dropdown dropdown2">
+                                        <div class="nav-item__title">
+                                            Campaign
+                                        </div>
+                                        <ul>
+                                            <li><a href="./">SS26 NAME</a></li>
+                                            <li><a href="./">FW26 NAME</a></li>
+                                            <li><a href="./">NAME-capsule</a></li>
+                                            <li><a href="./">SS26 NAME</a></li>
+                                            <li><a href="./">FW26 NAME</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./">ABOUT</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <!-- Мобильное меню-->
+                        <div class="menu__body" id="mobileMenu">
+                            <div class="accordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseShop">
+                                            <span class="text-uppercase">SHOP</span>
+                                            <span class="accordion-arrow"></span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseShop" class="accordion-collapse collapse"
+                                        data-bs-parent="#mobileMenu">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                <li><a href="./">New In</a></li>
+                                                <li><a href="./">Socks</a></li>
+                                                <li><a href="./">Stockings</a></li>
+                                                <li><a href="./">Knee-Highs</a></li>
+                                                <li><a href="./">Tights</a></li>
+                                                <li><a href="./">Sets</a></li>
+                                                <li><a href="./">All</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseWorld">
+                                            <span class="text-uppercase">WORLD</span>
+                                            <span class="accordion-arrow"></span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseWorld" class="accordion-collapse collapse"
+                                        data-bs-parent="#mobileMenu">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                <li><a data-id="accordion-campaign" href="./"
+                                                        class="accordion-link-click">Campaign</a>
+                                                </li>
+                                                <li><a href="./" class="active">Lookbook</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <a href="./" class="accordion-button">
+                                            <span class="text-uppercase">ABOUT</span>
+                                        </a>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div data-id="accordion-campaign" class="accordion-dropdown">
+                                <div class="nav-item__title">
+                                    Campaign
+                                </div>
+                                <ul>
+                                    <li><a href="./">SS26 NAME</a></li>
+                                    <li><a href="./">FW26 NAME</a></li>
+                                    <li><a href="./">NAME-capsule</a></li>
+                                    <li><a href="./">SS26 NAME</a></li>
+                                    <li><a href="./">FW26 NAME</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header__right">
+                        <a href="./" class="header__lang header-button lang-expand-lg">
+                            <svg aria-hidden="true" width="12" height="12">
+                                <use xlink:href="img/sprite.svg#lang"></use>
+                            </svg>
+                        </a>
+                        <div class="header-search">
+                            <button type="button" class="header-search__button header-button">
+                                <svg aria-hidden="true" width="12" height="12">
+                                    <use xlink:href="img/sprite.svg#search"></use>
+                                </svg>
+                            </button>
+                            <div class="header-search__overlay">
+                                <div class="header-search__content">
+                                    <div class="header-search__body">
+                                        <div class="header-search__top">
+                                            <div class="header-search__title">Search</div>
+                                            <div class="header-search__close">×</div>
+                                        </div>
+                                        <div class="header-search__bottom">
+                                            <div class="header-search__input">
+                                                <input autocomplete="off" type="text" name="form[]"
+                                                    placeholder="Start typing to search..." class="input">
+                                            </div>
+                                            <div data-simplebar class="header-search__results">
+                                                <ul>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="./">Name</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="header-search-products">
+                                        <div class="header-search-products__title">
+                                            Recently viwed
+                                        </div>
+                                        <div class="cards-slider swiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="cards-slider__slide swiper-slide">
+                                                    <a href="./" class="card-product">
+                                                        <img loading="lazy" src="img/product1.webp" alt=""
+                                                            class="card-product__pic1">
+                                                        <div class="card-product__item">
+                                                            <div class="card-product__name text-center">
+                                                                Name
+                                                            </div>
+                                                            <div class="card-product__price text-center">
+                                                                rub  480
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="cards-slider__slide swiper-slide">
+                                                    <a href="./" class="card-product">
+                                                        <img loading="lazy" src="img/product2.webp" alt=""
+                                                            class="card-product__pic1">
+                                                        <div class="card-product__item">
+                                                            <div class="card-product__name text-center">
+                                                                Name
+                                                            </div>
+                                                            <div class="card-product__price text-center">
+                                                                rub  480
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="cards-slider__slide swiper-slide">
+                                                    <a href="./" class="card-product">
+                                                        <img loading="lazy" src="img/product3.webp" alt=""
+                                                            class="card-product__pic1">
+                                                        <div class="card-product__item">
+                                                            <div class="card-product__name text-center">
+                                                                Name
+                                                            </div>
+                                                            <div class="card-product__price text-center">
+                                                                rub  480
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="cards-slider__slide swiper-slide">
+                                                    <a href="./" class="card-product">
+                                                        <img loading="lazy" src="img/product4.webp" alt=""
+                                                            class="card-product__pic1">
+                                                        <div class="card-product__item">
+                                                            <div class="card-product__name text-center">
+                                                                Name
+                                                            </div>
+                                                            <div class="card-product__price text-center">
+                                                                rub  480
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="./" class="header__account header-button">
+                            <svg aria-hidden="true" width="12" height="12">
+                                <use xlink:href="img/sprite.svg#account"></use>
+                            </svg>
+                        </a>
+                        <a href="./" class="header__cart header-button">
+                            <svg aria-hidden="true" width="12" height="12">
+                                <use xlink:href="img/sprite.svg#bag"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+
+            <div class="block-products main-products row">
+                <div class="block-products__card card-shadow card2 col-12 p-0">
+                    <img src="img/image13.webp" alt="SS26 NAME" class="block-products__pic desc">
+                    <img src="img/image3.webp" alt="SS26 NAME" class="block-products__pic mob">
+                </div>
+            </div>
+
+            <div class="block-menu">
+                <div class="container">
+                    <ul>
+                        <li>
+                            <a href="./" class="active">SS26 Lookbook</a>
+                        </li>
+                        <li>
+                            <a href="./">FW26 Lookbook</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="block-products row">
+                <div class="block-products__card col-12 col-sm-6 p-0">
+                    <img loading="lazy" src="img/image14.webp" alt="" class="block-products__pic">
+                </div>
+                <div class="block-products__card card-image-lookbook col-12 col-sm-6 p-0">
+                    <img loading="lazy" src="img/image15.webp" alt="" class="block-products__pic">
+                </div>
+            </div>
+
+            <div class="block-products row">
+                <div class="block-products__card card-image-lookbook card-image-big col-12 col-sm-6 p-0">
+                    <img loading="lazy" src="img/image15.webp" alt="" class="block-products__pic">
+                </div>
+                <div class="block-products__card card-image-lookbook-left col-12 col-sm-6 p-0">
+                    <img loading="lazy" src="img/image16.webp" alt="" class="block-products__pic">
+                </div>
+            </div>
+
+            <div class="block-video block-video-lookbook">
+                <video poster="img/image1.webp" loop="loop" autoplay preload muted playsinline>
+                    <source src="files/video.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="block-products row">
+                <div class="block-products__card card-image-lookbook-right col-12 col-sm-6 p-0">
+                    <img loading="lazy" src="img/image17.webp" alt="" class="block-products__pic">
+                </div>
+                <div class="block-products__card card-image-lookbook card-image-big  col-12 col-sm-6 p-0">
+                    <img loading="lazy" src="img/image15.webp" alt="" class="block-products__pic">
+                </div>
+            </div>
+
+            <div class="block-products row">
+                <div class="block-products__card card-image-lookbook card-image-lookbook-left col-12 col-sm-6 p-0">
+                    <img loading="lazy" src="img/image15.webp" alt="" class="block-products__pic">
+                </div>
+                <div class="block-products__card col-12 col-sm-6 p-0">
+                    <img loading="lazy" src="img/image14.webp" alt="" class="block-products__pic">
+                </div>
+            </div>
+
+        </main>
+        {% include 'blocks/footer.njk' %}
+    </div>
+    {% include 'blocks/scripts.njk' %}
+</body>
+
+</html>
