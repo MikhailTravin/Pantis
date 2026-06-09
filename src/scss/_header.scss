@@ -11,9 +11,7 @@
         z-index: 10;
         gap: 30px;
         padding: 20px 0px;
-        margin: 0px -8px;
         @media (max-width: 992px) {
-            margin: 0px 8px;
             padding: 15px 0px;
             gap: 0px;
         }
@@ -514,19 +512,12 @@
     // .header-cart__body
 
     &__body {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
         background: var(--color);
     }
 
     // .header-cart__top
 
     &__top {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        justify-content: space-between;
         padding: 40px 0px;
         margin: 0px 40px;
         border-bottom: 1px solid rgba(56, 40, 25, 0.2);
@@ -539,8 +530,6 @@
     // .header-cart__title
 
     &__title {
-        font-weight: 400;
-        font-size: 16px;
         line-height: 113%;
         @media (max-width: 768px) {
             font-size: 14px;
@@ -582,6 +571,9 @@
         }
         @media (max-width: 992px) {
             padding: 20px 16px;
+            max-height: calc(100vh - 250px);
+        }
+        @media (max-width: 768px) {
             max-height: calc(100vh - 290px);
         }
     }
@@ -589,20 +581,15 @@
     // .header-cart__cards
 
     &__cards {
-        display: flex;
-        flex-direction: column;
         gap: 20px;
     }
 
     // .header-cart__bottom
 
     &__bottom {
-        display: flex;
-        flex-direction: column;
-        gap: 26px;
         padding: 20px 40px 24px 40px;
-        background: var(--fanciclub-com-white);
         @media (max-width: 992px) {
+            margin-top: auto;
             padding: 20px 16px 30px 16px;
         }
     }
@@ -610,17 +597,11 @@
     // .header-cart__total
 
     &__total {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
         margin-bottom: -6px;
-        gap: 10px 20px;
         @media (max-width: 768px) {
             margin-bottom: 0px;
         }
         span {
-            font-weight: 400;
-            font-size: 16px;
             line-height: 113%;
         }
     }
@@ -628,17 +609,12 @@
     // .header-cart__summ
 
     &__summ {
-        font-weight: 400;
-        font-size: 16px;
         line-height: 113%;
-        text-align: right;
     }
 
     // .header-cart__text
 
     &__text {
-        font-weight: 400;
-        font-size: 14px;
         line-height: 129%;
         color: rgba(56, 40, 25, 0.5);
         @media (max-width: 768px) {
@@ -651,13 +627,11 @@
 
     &__buttons {
         gap: 20px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
         @media (max-width: 768px) {
             gap: 5px 10px;
         }
         @media (max-width: 389px) {
-            grid-template-columns: 1fr;
+            flex-direction: column;
         }
         .btn-custom {
             width: 100%;
@@ -689,8 +663,7 @@
     }
 }
 .card-cart {
-    display: flex;
-    gap: 16px;
+    width: 100%;
     // .card-cart__image
 
     &__image {
@@ -701,7 +674,6 @@
         img {
             height: 100%;
             width: 160px;
-            object-fit: cover;
             @media (max-width: 992px) {
                 width: 93px;
             }
@@ -715,15 +687,12 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: 30px;
     }
 
     // .card-cart__title
 
     &__title {
         max-width: 250px;
-        font-weight: 400;
-        font-size: 16px;
         line-height: 113%;
         @media (max-width: 992px) {
             max-width: 160px;
@@ -735,10 +704,7 @@
     // .card-cart__item
 
     &__item {
-        display: flex;
-        justify-content: space-between;
         gap: 20px;
-        align-items: flex-end;
     }
 
     // .card-cart__left
@@ -767,8 +733,6 @@
     // .card-cart__price
 
     &__price {
-        font-weight: 400;
-        font-size: 16px;
         line-height: 113%;
         @media (max-width: 992px) {
             font-size: 12px;

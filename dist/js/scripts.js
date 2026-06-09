@@ -338,50 +338,71 @@ if (header) {
 }
 
 //Форма
-function formFieldsInit(options = { viewPass: true, autoHeight: false }) {
+function formFieldsInit(options = { viewPass: true, autoHeight: false, checkSubmit: true }) {
     document.body.addEventListener("focusin", function (e) {
         const targetElement = e.target;
         if ((targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA')) {
             if (!targetElement.hasAttribute('data-no-focus-classes')) {
                 targetElement.classList.add('_form-focus');
-                targetElement.parentElement.classList.add('_form-focus');
+                if (targetElement.parentElement) {
+                    targetElement.parentElement.classList.add('_form-focus');
+                }
             }
             formValidate.removeError(targetElement);
-            targetElement.hasAttribute('data-validate') ? formValidate.removeError(targetElement) : null;
+            if (targetElement.hasAttribute('data-validate') || targetElement.hasAttribute('data-required')) {
+                formValidate.removeError(targetElement);
+            }
         }
     });
+
     document.body.addEventListener("focusout", function (e) {
         const targetElement = e.target;
         if ((targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA')) {
             if (!targetElement.hasAttribute('data-no-focus-classes')) {
                 targetElement.classList.remove('_form-focus');
-                targetElement.parentElement.classList.remove('_form-focus');
+                if (targetElement.parentElement) {
+                    targetElement.parentElement.classList.remove('_form-focus');
+                }
             }
             if (targetElement.value.trim()) {
-                targetElement.parentElement.classList.add('filled');
+                if (targetElement.parentElement) {
+                    targetElement.parentElement.classList.add('filled');
+                }
             } else {
-                targetElement.parentElement.classList.remove('filled');
+                if (targetElement.parentElement) {
+                    targetElement.parentElement.classList.remove('filled');
+                }
             }
-            targetElement.hasAttribute('data-validate') ? formValidate.validateInput(targetElement) : null;
+            if (targetElement.hasAttribute('data-validate') || targetElement.hasAttribute('data-required')) {
+                formValidate.validateInput(targetElement);
+                const form = targetElement.closest('form');
+                if (form) {
+                    if (window.updateSubmitButtonState) {
+                        window.updateSubmitButtonState(form);
+                    } else {
+                        updateSubmitButtonStateDirect(form);
+                    }
+                }
+            }
         }
     });
+
     if (options.viewPass) {
         document.addEventListener("click", function (e) {
             const targetElement = e.target;
             if (targetElement.closest('.form__viewpass')) {
                 const viewpassBlock = targetElement.closest('.form__viewpass');
-                const input = viewpassBlock.closest('.form__input').querySelector('input');
+                const input = viewpassBlock ? viewpassBlock.closest('.form__input')?.querySelector('input') : null;
 
                 if (input) {
                     const isActive = viewpassBlock.classList.contains('_viewpass-active');
                     input.setAttribute("type", isActive ? "password" : "text");
                     viewpassBlock.classList.toggle('_viewpass-active');
-                } else {
-                    console.error('Input не найден!');
                 }
             }
         });
     }
+
     if (options.autoHeight) {
         const textareas = document.querySelectorAll('textarea[data-autoheight]');
         if (textareas.length) {
@@ -403,15 +424,110 @@ function formFieldsInit(options = { viewPass: true, autoHeight: false }) {
             }
         }
     }
+
+    if (options.checkSubmit) {
+        window.updateSubmitButtonState = function (form) {
+            if (!form) return;
+
+            const submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
+            if (!submitButton) return;
+
+            const requiredFields = form.querySelectorAll('[data-required], [data-validate]');
+
+            let allFilled = true;
+
+            requiredFields.forEach(field => {
+                const isVisible = (field.offsetParent !== null || field.tagName === "SELECT");
+                const isDisabled = field.disabled;
+
+                if ((isVisible || field.tagName === "SELECT") && !isDisabled) {
+                    if (field.type === 'checkbox') {
+                        if (!field.checked) {
+                            allFilled = false;
+                        }
+                    } else if (field.type === 'radio') {
+                        const radioGroup = form.querySelectorAll(`input[name="${field.name}"]`);
+                        const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+                        if (!isChecked) {
+                            allFilled = false;
+                        }
+                    } else {
+                        if (!field.value.trim()) {
+                            allFilled = false;
+                        }
+                    }
+                }
+            });
+
+            if (allFilled && requiredFields.length > 0) {
+                submitButton.classList.remove('disabled');
+            } else {
+                submitButton.classList.add('disabled');
+            }
+
+            return allFilled;
+        };
+
+        window.updateSubmitButtonStateDirect = window.updateSubmitButtonState;
+
+        const forms = document.forms;
+
+        for (let form of forms) {
+            setTimeout(() => {
+                if (window.updateSubmitButtonState) {
+                    window.updateSubmitButtonState(form);
+                }
+            }, 100);
+
+            form.addEventListener('input', () => {
+                if (window.updateSubmitButtonState) {
+                    window.updateSubmitButtonState(form);
+                }
+            });
+            form.addEventListener('change', () => {
+                if (window.updateSubmitButtonState) {
+                    window.updateSubmitButtonState(form);
+                }
+            });
+        }
+    }
 }
+
 formFieldsInit({
     viewPass: true,
     autoHeight: false
 });
+
+setTimeout(() => {
+    if (typeof window.updateSubmitButtonState !== 'function') {
+        window.updateSubmitButtonState = function (form) {
+            if (!form) return;
+            const submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
+            if (!submitButton) return;
+            const requiredFields = form.querySelectorAll('[data-required], [data-validate]');
+            let allFilled = true;
+            requiredFields.forEach(field => {
+                if (field.offsetParent !== null && !field.disabled) {
+                    if (field.type === 'checkbox') {
+                        if (!field.checked) allFilled = false;
+                    } else if (!field.value.trim()) {
+                        allFilled = false;
+                    }
+                }
+            });
+            if (allFilled && requiredFields.length > 0) {
+                submitButton.classList.remove('disabled');
+            } else {
+                submitButton.classList.add('disabled');
+            }
+        };
+    }
+}, 200);
+
 let formValidate = {
     getErrors(form) {
         let error = 0;
-        let formRequiredItems = form.querySelectorAll('*[data-required]');
+        let formRequiredItems = form.querySelectorAll('[data-required], [data-validate]');
         if (formRequiredItems.length) {
             formRequiredItems.forEach(formRequiredItem => {
                 if ((formRequiredItem.offsetParent !== null || formRequiredItem.tagName === "SELECT") && !formRequiredItem.disabled) {
@@ -421,8 +537,14 @@ let formValidate = {
         }
         return error;
     },
+
     validateInput(formRequiredItem) {
         let error = 0;
+
+        const hasDataRequired = formRequiredItem.hasAttribute('data-required');
+        const hasDataValidate = formRequiredItem.hasAttribute('data-validate');
+
+        if (!hasDataRequired && !hasDataValidate) return 0;
 
         if (formRequiredItem.dataset.required === "email") {
             formRequiredItem.value = formRequiredItem.value.replace(" ", "");
@@ -434,10 +556,29 @@ let formValidate = {
                 this.removeError(formRequiredItem);
                 this.addSuccess(formRequiredItem);
             }
-        } else if (formRequiredItem.type === "checkbox" && !formRequiredItem.checked) {
-            this.addError(formRequiredItem);
-            this.removeSuccess(formRequiredItem);
-            error++;
+        } else if (formRequiredItem.type === "checkbox") {
+            if (!formRequiredItem.checked) {
+                this.addError(formRequiredItem);
+                this.removeSuccess(formRequiredItem);
+                error++;
+            } else {
+                this.removeError(formRequiredItem);
+                this.addSuccess(formRequiredItem);
+            }
+        } else if (formRequiredItem.type === "radio") {
+            const form = formRequiredItem.closest('form');
+            if (form) {
+                const radioGroup = form.querySelectorAll(`input[name="${formRequiredItem.name}"]`);
+                const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+                if (!isChecked) {
+                    this.addError(formRequiredItem);
+                    this.removeSuccess(formRequiredItem);
+                    error++;
+                } else {
+                    this.removeError(formRequiredItem);
+                    this.addSuccess(formRequiredItem);
+                }
+            }
         } else if (formRequiredItem.dataset.validate === "password-confirm") {
             const passwordInput = document.getElementById('password');
             if (!passwordInput) return error;
@@ -461,51 +602,68 @@ let formValidate = {
             }
         }
 
+        const form = formRequiredItem.closest('form');
+        if (form && window.updateSubmitButtonState) {
+            window.updateSubmitButtonState(form);
+        }
+
         return error;
     },
+
     addError(formRequiredItem) {
         formRequiredItem.classList.add('_form-error');
-        formRequiredItem.parentElement.classList.add('_form-error');
-        let inputError = formRequiredItem.parentElement.querySelector('.form__error');
-        if (inputError) formRequiredItem.parentElement.removeChild(inputError);
-        if (formRequiredItem.dataset.error) {
-            formRequiredItem.parentElement.insertAdjacentHTML('beforeend', `<div class="form__error">${formRequiredItem.dataset.error}</div>`);
+        if (formRequiredItem.parentElement) {
+            formRequiredItem.parentElement.classList.add('_form-error');
+            let inputError = formRequiredItem.parentElement.querySelector('.form__error');
+            if (inputError) formRequiredItem.parentElement.removeChild(inputError);
+            if (formRequiredItem.dataset.error) {
+                formRequiredItem.parentElement.insertAdjacentHTML('beforeend', `<div class="form__error">${formRequiredItem.dataset.error}</div>`);
+            }
+            formRequiredItem.parentElement.classList.remove('filled');
         }
-        formRequiredItem.parentElement.classList.remove('filled');
     },
+
     removeError(formRequiredItem) {
         formRequiredItem.classList.remove('_form-error');
-        formRequiredItem.parentElement.classList.remove('_form-error');
-        if (formRequiredItem.parentElement.querySelector('.form__error')) {
-            formRequiredItem.parentElement.removeChild(formRequiredItem.parentElement.querySelector('.form__error'));
+        if (formRequiredItem.parentElement) {
+            formRequiredItem.parentElement.classList.remove('_form-error');
+            if (formRequiredItem.parentElement.querySelector('.form__error')) {
+                formRequiredItem.parentElement.removeChild(formRequiredItem.parentElement.querySelector('.form__error'));
+            }
         }
     },
+
     addSuccess(formRequiredItem) {
         formRequiredItem.classList.add('_form-success');
-        formRequiredItem.parentElement.classList.add('_form-success');
-        if (formRequiredItem.value.trim()) {
-            formRequiredItem.parentElement.classList.add('filled');
+        if (formRequiredItem.parentElement) {
+            formRequiredItem.parentElement.classList.add('_form-success');
+            if (formRequiredItem.value && formRequiredItem.value.trim()) {
+                formRequiredItem.parentElement.classList.add('filled');
+            }
         }
     },
+
     removeSuccess(formRequiredItem) {
         formRequiredItem.classList.remove('_form-success');
-        formRequiredItem.parentElement.classList.remove('_form-success');
-        formRequiredItem.parentElement.classList.remove('filled');
+        if (formRequiredItem.parentElement) {
+            formRequiredItem.parentElement.classList.remove('_form-success');
+            formRequiredItem.parentElement.classList.remove('filled');
+        }
     },
+
     formClean(form) {
         form.reset();
         setTimeout(() => {
             let inputs = form.querySelectorAll('input,textarea');
             for (let index = 0; index < inputs.length; index++) {
                 const el = inputs[index];
-                el.parentElement.classList.remove('_form-focus');
+                if (el.parentElement) {
+                    el.parentElement.classList.remove('_form-focus');
+                    el.parentElement.classList.remove('_form-success');
+                    el.parentElement.classList.remove('filled');
+                }
                 el.classList.remove('_form-focus');
-
                 el.classList.remove('_form-success');
-                el.parentElement.classList.remove('_form-success');
-
-                el.parentElement.classList.remove('filled');
-
                 formValidate.removeError(el);
 
                 if (el.classList.contains('telephone') && el.clearFilled) {
@@ -519,25 +677,36 @@ let formValidate = {
                     const checkbox = checkboxes[index];
                     checkbox.checked = false;
                     checkbox.classList.remove('_form-success');
-                    checkbox.closest('.checkbox')?.classList.remove('_form-success');
+                    if (checkbox.closest) {
+                        const closestCheckbox = checkbox.closest('.checkbox');
+                        if (closestCheckbox) closestCheckbox.classList.remove('_form-success');
+                    }
                 }
             }
 
-            if (modules_flsModules.select) {
+            if (typeof window.modules_flsModules !== 'undefined' && window.modules_flsModules.select) {
                 let selects = form.querySelectorAll('div.select');
                 if (selects.length) {
                     for (let index = 0; index < selects.length; index++) {
                         const select = selects[index].querySelector('select');
-                        modules_flsModules.select.selectBuild(select);
+                        if (select && window.modules_flsModules.select.selectBuild) {
+                            window.modules_flsModules.select.selectBuild(select);
+                        }
                     }
                 }
             }
+
+            if (window.updateSubmitButtonState) {
+                window.updateSubmitButtonState(form);
+            }
         }, 0);
     },
+
     emailTest(formRequiredItem) {
         return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
     }
 };
+
 function formSubmit() {
     const forms = document.forms;
     if (forms.length) {
@@ -552,7 +721,14 @@ function formSubmit() {
             });
         }
     }
+
     async function formSubmitAction(form, e) {
+        const submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
+        if (submitButton && submitButton.classList.contains('disabled')) {
+            e.preventDefault();
+            return;
+        }
+
         const error = !form.hasAttribute('data-no-validate') ? formValidate.getErrors(form) : 0;
         if (error === 0) {
             const ajax = form.hasAttribute('data-ajax');
@@ -583,10 +759,13 @@ function formSubmit() {
             e.preventDefault();
             if (form.querySelector('._form-error') && form.hasAttribute('data-goto-error')) {
                 const formGoToErrorClass = form.dataset.gotoError ? form.dataset.gotoError : '._form-error';
-                gotoBlock(formGoToErrorClass, true, 1000);
+                if (typeof gotoBlock === 'function') {
+                    gotoBlock(formGoToErrorClass, true, 1000);
+                }
             }
         }
     }
+
     function formSent(form, responseResult = ``) {
         document.dispatchEvent(new CustomEvent("formSent", {
             detail: {
@@ -603,16 +782,46 @@ function formSubmit() {
         });
 
         setTimeout(() => {
-            if (modules_flsModules.popup) {
+            if (typeof window.modules_flsModules !== 'undefined' && window.modules_flsModules.popup) {
                 const popup = form.dataset.popupMessage;
-                popup ? modules_flsModules.popup.open(popup) : null;
+                if (popup) window.modules_flsModules.popup.open(popup);
             }
         }, 0);
 
         formValidate.formClean(form);
     }
 }
+
 formSubmit();
+
+setTimeout(() => {
+    const forms = document.forms;
+    for (let form of forms) {
+        if (window.updateSubmitButtonState) {
+            window.updateSubmitButtonState(form);
+        } else {
+            const submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
+            if (submitButton) {
+                const requiredFields = form.querySelectorAll('[data-required], [data-validate]');
+                let allFilled = true;
+                requiredFields.forEach(field => {
+                    if (field.offsetParent !== null && !field.disabled) {
+                        if (field.type === 'checkbox') {
+                            if (!field.checked) allFilled = false;
+                        } else if (!field.value.trim()) {
+                            allFilled = false;
+                        }
+                    }
+                });
+                if (allFilled && requiredFields.length > 0) {
+                    submitButton.classList.remove('disabled');
+                } else {
+                    submitButton.classList.add('disabled');
+                }
+            }
+        }
+    }
+}, 500);
 
 //Количество
 function formQuantity() {
@@ -828,3 +1037,16 @@ function formQuantity() {
     }
 }
 formQuantity();
+
+//Оплата
+// Находим кнопку и родительский контейнер
+const buttonCard = document.querySelector('.cart-details__button.button-card');
+const paymentsContainer = document.querySelector('.cart-details__payments');
+
+// Добавляем обработчик клика
+buttonCard.addEventListener('click', function (e) {
+    e.preventDefault(); // Предотвращаем возможное действие по умолчанию
+
+    // Переключаем класс active
+    paymentsContainer.classList.toggle('active');
+});

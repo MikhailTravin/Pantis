@@ -139,4 +139,9 @@ a {
       background-color: var(--color-orange-45);
     }
   }
+  &.disabled {
+    background: rgba(56, 40, 25, 0.5);
+    pointer-events: none;
+    color: var(--color);
+  }
 }

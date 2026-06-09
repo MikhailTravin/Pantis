@@ -13,43 +13,40 @@
 
             <div class="cabinet">
                 <div class="container">
-                    <div class="cabinet-auth">
-                        <div class="cabinet-auth__image">
-                            <img src="img/image20.webp" alt="">
+                    <div class="cabinet-auth row align-items-center justify-content-between">
+                        <div class="cabinet-auth__image col-12 col-md-6 col-lg-6 text-center p-0">
+                            <img src="img/image20.webp" alt="" class="img-fluid mix-blend-multiply w-md-75">
                         </div>
-                        <div class="cabinet-auth__body">
-                            <div class="cabinet-auth__top">
-                                <div class="cabinet-auth__titles">
-                                    <div class="cabinet-auth__title">
-                                        WELCOME BACK
-                                    </div>
-                                    <div class="cabinet-auth__text">
-                                        <p>
-                                            Login to Your Account
-                                        </p>
-                                        <p>
-                                            Don't have an account?
-                                            <a href="./">Register</a>
-                                        </p>
-                                    </div>
+                        <div class="cabinet-auth__body col-12 col-md-6 col-lg-5">
+                            <div class="text-center mb-5">
+                                <h5 class="cabinet-auth__title text-uppercase">WELCOME BACK</h5>
+                                <div class="cabinet-auth__text">
+                                    <p class="small mb-1">
+                                        Login to Your Account
+                                    </p>
+                                    <p class="small">
+                                        Don't have an account?
+                                        <a href="./">Register</a>
+                                    </p>
                                 </div>
                             </div>
-                            <form action="#" class="form">
-                                <div class="form__inputs">
-                                    <div class="form__input">
-                                        <label for="email">Email</label>
-                                        <input id="email" data-required autocomplete="off" type="text" name="form[]"
-                                            placeholder="Email">
-                                    </div>
-                                    <div class="form__input">
-                                        <label for="password">Password</label>
-                                        <input id="password" data-required autocomplete="off" type="password" name="form[]"
-                                            placeholder="Password">
-                                    </div>
+                            <form action="#">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Email"
+                                        data-required>
                                 </div>
-                                <div class="form__bottom">
-                                    <button type="submit" class="btn-custom btn-brown">SIGN IN</button>
-                                    <a href="./" class="form__forgot-password">Forgot password?</a>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Password"
+                                        data-required>
+                                </div>
+
+                                <div class="form-bottom d-flex flex-column">
+                                    <button type="submit" class="btn-custom btn-brown w-100">SIGN IN</button>
+                                    <a href="./" class="form-forgot-password text-uppercase text-center">
+                                        Forgot password?
+                                    </a>
                                 </div>
                             </form>
                         </div>

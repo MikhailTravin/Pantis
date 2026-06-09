@@ -2,7 +2,7 @@
 <html lang="ru">
 
 	<head>
-		<title>Главная</title>
+		<title>Оформление заказа</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,11 +16,11 @@
 
 	<body class="preload mp">
 		<div class="main-wrapper-outer">
-			<header class="header fixed-top">
+			<header class="header fixed-top header-black">
 				<div class="container">
 					<div class="header__content d-flex align-items-center g-3 flex-nowrap p0">
 						<a href="./" class="header__logo">
-							<img src="img/icons/logo1.svg" alt="">
+							<img src="img/icons/logo2.svg" alt="">
 						</a>
 						<div class="menu">
 							<div class="header-button header-button-burger">
@@ -431,208 +431,167 @@
 			</header>
 			<main class="main">
 
-				<div class="block-products main-products row">
-					<a href="./" class="block-products__card card-shadow card2 col-12 p-0">
-						<img src="img/image1.webp" alt="NEW IN" class="block-products__pic desc">
-						<img src="img/image2.webp" alt="NEW IN" class="block-products__pic mob">
-						<div class="block-products__item">
-							<div class="block-products__text">
-								Cloth
-								<span class="text-uppercase">NEW IN</span>
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<div class="block-products row">
-					<a href="./" class="block-products__card card-shadow col-12 col-sm-6 p-0">
-						<img loading="lazy" src="img/image3.webp" alt="Socks" class="block-products__pic">
-						<div class="block-products__item">
-							<div class="block-products__text">
-								Cloth
-								<span class="text-uppercase">Socks</span>
-							</div>
-						</div>
-					</a>
-					<a href="./" class="block-products__card card-shadow col-12 col-sm-6 p-0">
-						<img loading="lazy" src="img/image4.webp" alt="Stockings" class="block-products__pic">
-						<div class="block-products__item">
-							<div class="block-products__text">
-								Cloth
-								<span class="text-uppercase">Stockings</span>
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<div class="block-catalog-products">
+				<div class="cart">
 					<div class="container">
-						<div class="block-catalog-products__content">
-							<h2 class="title2 text-center">All</h2>
-							<div class="cards-slider swiper">
-								<div class="swiper-wrapper">
-									<div class="cards-slider__slide swiper-slide">
-										<a href="./" class="card-product">
-											<img loading="lazy" src="img/product1.webp" alt="" class="card-product__pic1">
-											<div class="card-product__item">
-												<div class="card-product__name text-center">
-													Name
-												</div>
-												<div class="card-product__price text-center">
-													rub  480
-												</div>
-											</div>
-										</a>
+						<div class="cart__content  d-flex position-relative">
+							<div class="cart-details">
+								<div class="cart-details__body d-flex flex-column">
+									<div class="cart-details__title">
+										CHECKOUT
 									</div>
-									<div class="cards-slider__slide swiper-slide">
-										<a href="./" class="card-product">
-											<img loading="lazy" src="img/product2.webp" alt="" class="card-product__pic1">
-											<div class="card-product__item">
-												<div class="card-product__name text-center">
-													Name
+									<form action="#">
+										<div class="form-column d-flex flex-column">
+											<div class="mb-3 mb-550-0">
+												<label for="email" class="form-label">Email</label>
+												<input type="email" class="form-control" id="email" placeholder="Email" data-required>
+											</div>
+											<div class="form-row mb-3">
+												<div>
+													<label for="first-name" class="form-label">First Name</label>
+													<input type="text" class="form-control" id="first-name" placeholder="First Name" data-required>
 												</div>
-												<div class="card-product__price text-center">
-													rub  480
+												<div>
+													<label for="last-name" class="form-label">Last Name</label>
+													<input type="text" class="form-control" id="last-name" placeholder="Last Name" data-required>
 												</div>
 											</div>
+										</div>
+										<div class="form-subtitle text-uppercase mb-2">Address</div>
+										<div class="form-column d-flex flex-column mb-5 mb-md-5">
+											<div class="form-row">
+												<div>
+													<label for="city" class="form-label">City</label>
+													<input type="text" class="form-control" id="city" placeholder="City" data-required>
+												</div>
+												<div>
+													<label for="street" class="form-label">Street</label>
+													<input type="text" class="form-control" id="street" placeholder="Street" data-required>
+												</div>
+											</div>
+											<div class="form-row">
+												<div>
+													<label for="house" class="form-label">House / Building</label>
+													<input type="text" class="form-control" id="house" placeholder="House / Building" data-required>
+												</div>
+												<div>
+													<label for="code" class="form-label">Postal Code</label>
+													<input type="text" class="form-control" id="code" placeholder="Postal Code" data-required>
+												</div>
+											</div>
+											<div class="form-row">
+												<div>
+													<label for="phone" class="form-label">Phone Number</label>
+													<input type="text" class="form-control" id="phone" placeholder="+7 900 000 00 00" data-required>
+												</div>
+											</div>
+										</div>
+										<div class="form-bottom d-flex flex-column">
+											<button type="submit" class="btn-custom btn-brown w-100 disabled">CONTINUE TO
+												PAYMENT</button>
+											<a href="./" class="form-text text-center">
+												By proceeding, you agree to our Terms & Conditions
+											</a>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="cart__body">
+								<div class="cart__cards d-flex flex-column">
+									<div class="card-cart d-flex gap-3">
+										<a href="./" class="card-cart__image">
+											<img loading="lazy" src="img/product1.webp" alt="">
 										</a>
+										<div class="card-cart__body d-flex flex-column justify-content-between">
+											<a href="./" class="card-cart__title">SUBTOTAL</a>
+											<div class="card-cart__item d-flex justify-content-between align-items-end">
+												<div class="card-cart__left d-flex flex-column">
+													<div class="card-cart__info small">Pink, One size
+													</div>
+													<div class="card-cart__price">10 000 RUS</div>
+												</div>
+												<div data-quantity class="quantity d-flex align-items-center justify-content-center">
+													<button data-quantity-minus type="button" class="quantity__button quantity__button_minus d-flex align-items-center justify-content-center text-center text-uppercase">-</button>
+													<div class="quantity__input">
+														<input data-quantity-value autocomplete="off" type="text" name="form[]" value="1" class="text-uppercase text-center">
+													</div>
+													<button data-quantity-plus type="button" class="quantity__button quantity__button_plus d-flex align-items-center justify-content-center text-center text-uppercase">+</button>
+												</div>
+											</div>
+										</div>
 									</div>
-									<div class="cards-slider__slide swiper-slide">
-										<a href="./" class="card-product">
-											<img loading="lazy" src="img/product3.webp" alt="" class="card-product__pic1">
-											<div class="card-product__item">
-												<div class="card-product__name text-center">
-													Name
+									<div class="card-cart d-flex gap-3">
+										<a href="./" class="card-cart__image">
+											<img loading="lazy" src="img/product1.webp" alt="">
+										</a>
+										<div class="card-cart__body d-flex flex-column justify-content-between">
+											<a href="./" class="card-cart__title">SUBTOTAL</a>
+											<div class="card-cart__item d-flex justify-content-between align-items-end">
+												<div class="card-cart__left d-flex flex-column">
+													<div class="card-cart__info small">Pink, One size
+													</div>
+													<div class="card-cart__price">10 000 RUS</div>
 												</div>
-												<div class="card-product__price text-center">
-													rub  480
+												<div data-quantity class="quantity d-flex align-items-center justify-content-center">
+													<button data-quantity-minus type="button" class="quantity__button quantity__button_minus d-flex align-items-center justify-content-center text-center text-uppercase">-</button>
+													<div class="quantity__input">
+														<input data-quantity-value autocomplete="off" type="text" name="form[]" value="1" class="text-uppercase text-center">
+													</div>
+													<button data-quantity-plus type="button" class="quantity__button quantity__button_plus d-flex align-items-center justify-content-center text-center text-uppercase">+</button>
 												</div>
 											</div>
-										</a>
+										</div>
 									</div>
-									<div class="cards-slider__slide swiper-slide">
-										<a href="./" class="card-product">
-											<img loading="lazy" src="img/product4.webp" alt="" class="card-product__pic1">
-											<div class="card-product__item">
-												<div class="card-product__name text-center">
-													Name
+									<div class="card-cart d-flex gap-3">
+										<a href="./" class="card-cart__image">
+											<img loading="lazy" src="img/product1.webp" alt="">
+										</a>
+										<div class="card-cart__body d-flex flex-column justify-content-between">
+											<a href="./" class="card-cart__title">SUBTOTAL</a>
+											<div class="card-cart__item d-flex justify-content-between align-items-end">
+												<div class="card-cart__left d-flex flex-column">
+													<div class="card-cart__info small">Pink, One size
+													</div>
+													<div class="card-cart__price">10 000 RUS</div>
 												</div>
-												<div class="card-product__price text-center">
-													rub  480
+												<div data-quantity class="quantity d-flex align-items-center justify-content-center">
+													<button data-quantity-minus type="button" class="quantity__button quantity__button_minus d-flex align-items-center justify-content-center text-center text-uppercase">-</button>
+													<div class="quantity__input">
+														<input data-quantity-value autocomplete="off" type="text" name="form[]" value="1" class="text-uppercase text-center">
+													</div>
+													<button data-quantity-plus type="button" class="quantity__button quantity__button_plus d-flex align-items-center justify-content-center text-center text-uppercase">+</button>
 												</div>
 											</div>
+										</div>
+									</div>
+									<div class="card-cart d-flex gap-3">
+										<a href="./" class="card-cart__image">
+											<img loading="lazy" src="img/product1.webp" alt="">
 										</a>
+										<div class="card-cart__body d-flex flex-column justify-content-between">
+											<a href="./" class="card-cart__title">SUBTOTAL</a>
+											<div class="card-cart__item d-flex justify-content-between align-items-end">
+												<div class="card-cart__left d-flex flex-column">
+													<div class="card-cart__info small">Pink, One size
+													</div>
+													<div class="card-cart__price">10 000 RUS</div>
+												</div>
+												<div data-quantity class="quantity d-flex align-items-center justify-content-center">
+													<button data-quantity-minus type="button" class="quantity__button quantity__button_minus d-flex align-items-center justify-content-center text-center text-uppercase">-</button>
+													<div class="quantity__input">
+														<input data-quantity-value autocomplete="off" type="text" name="form[]" value="1" class="text-uppercase text-center">
+													</div>
+													<button data-quantity-plus type="button" class="quantity__button quantity__button_plus d-flex align-items-center justify-content-center text-center text-uppercase">+</button>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-							<a href="./" class="btn-custom">See more</a>
 						</div>
 					</div>
-				</div>
-
-				<div class="block-products row">
-					<a href="./" class="block-products__card card-shadow card2 col-12 p-0">
-						<img loading="lazy" src="img/image5.webp" alt="Sets" class="block-products__pic desc">
-						<img loading="lazy" src="img/image6.webp" alt="Sets" class="block-products__pic mob">
-						<div class="block-products__item">
-							<div class="block-products__text">
-								Cloth
-								<span class="text-uppercase">Sets</span>
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<div class="block-products row">
-					<a href="./" class="block-products__card card-shadow col-12 col-sm-6 p-0">
-						<img loading="lazy" src="img/image7.webp" alt="Knee-Highs" class="block-products__pic desc">
-						<img loading="lazy" src="img/image8.webp" alt="Knee-Highs" class="block-products__pic mob">
-						<div class="block-products__item">
-							<div class="block-products__text">
-								Cloth
-								<span class="text-uppercase">Knee-Highs</span>
-							</div>
-						</div>
-					</a>
-					<a href="./" class="block-products__card card-shadow col-12 col-sm-6 p-0">
-						<img loading="lazy" src="img/image9.webp" alt="Tights" class="block-products__pic">
-						<div class="block-products__item">
-							<div class="block-products__text">
-								Cloth
-								<span class="text-uppercase">Tights</span>
-							</div>
-						</div>
-					</a>
 				</div>
 
 			</main>
-			<footer class="footer">
-				<div class="container">
-					<div class="footer__content">
-						<div class="footer-top row">
-							<div class="footer-top__left col-md-6 col-lg-5">
-								<a href="./" class="footer-top__logo">
-									<img loading="lazy" src="img/icons/logo2.svg" alt="Logo">
-								</a>
-								<div class="footer-top__text text-uppercase">
-									Modern legwear for everyday dressing
-								</div>
-							</div>
-							<div class="footer-top__menu">
-								<div class="footer-top__menu-left">
-									<ul>
-										<li>
-											<a href="./">New In</a>
-										</li>
-										<li>
-											<a href="./">Socks</a>
-										</li>
-										<li>
-											<a href="./">Stockings</a>
-										</li>
-										<li>
-											<a href="./">Tights</a>
-										</li>
-										<li>
-											<a href="./">Sets</a>
-										</li>
-									</ul>
-									<ul>
-										<li>
-											<a href="./">Campaign</a>
-										</li>
-										<li>
-											<a href="./">Lookbook</a>
-										</li>
-										<li>
-											<a href="./">Styling</a>
-										</li>
-										<li>
-											<a href="./">Journal</a>
-										</li>
-									</ul>
-								</div>
-								<ul>
-									<li>
-										<a href="./">Shipping & Returns</a>
-									</li>
-									<li>
-										<a href="./">Contact</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="footer-bottom row">
-							<div class="footer-bottom__copy col-6">
-								© 2026 PANTIS
-							</div>
-							<div class="footer-bottom__link col-6">
-								<a href="./">Privacy Policy</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
 		</div>
 		<!-- Подписка на рассылку -->
 		<div class="modal fade" tabindex="-1" id="subscribe">
@@ -691,7 +650,6 @@
 				</div>
 			</div>
 		</div>
-		<script src="js/swiper-10.2.0.min.js"></script>
 		<script src="js/bootstrap.bundle.min.js"></script>
 		<script src="js/simplebar.min.js"></script>
 		<script src="js/scripts.js"></script>

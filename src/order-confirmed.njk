@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Заказ подтвержден</title>
+    {% include 'blocks/head.njk' %}
+</head>
+
+<body class="preload mp">
+    <div class="main-wrapper-outer">
+        {% include 'blocks/header-black.njk' %}
+        <main class="main">
+
+            <div class="order-confirmed d-flex flex-column justify-content-center align-items-center">
+                <div class="container">
+                    <div class="order-confirmed__content d-flex flex-column align-items-center">
+                        <div class="order-confirmed__titles d-flex flex-column">
+                            <p class="text-uppercase text-center">
+                                Order Confirmed
+                            </p>
+                            <p class="text-uppercase text-center">
+                                Thank you for your purchase
+                            </p>
+                            <p class="text-uppercase text-center">
+                                Order #PNT-1024
+                            </p>
+                        </div>
+                        <div class="order-confirmed__text text-center">
+                            A confirmation email has been sent to your email address.<br>Tracking information will be
+                            provided once your order has been shipped.
+                        </div>
+                        <a href="./" class="btn-custom btn-brown text-uppercase">CONTINUE SHOPPING</a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    {% include 'blocks/popups.njk' %}
+    {% include 'blocks/scripts.njk' %}
+</body>
+
+</html>

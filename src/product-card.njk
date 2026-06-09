@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Карточка товара</title>
+    {% include 'blocks/head.njk' %}
+</head>
+
+<body class="preload mp">
+    <div class="main-wrapper-outer">
+        {% include 'blocks/header-black.njk' %}
+        <main class="main">
+
+            <div class="product-card">
+                <div class="product-card__images swiper">
+                    <div class="product-card__image">
+                        <img src="img/product1.webp" alt="">
+                    </div>
+                </div>
+                <div class="product-card-info">
+                    <div class="product-card-info__column">
+                        <div class="product-card-info__title">
+                            stockings
+                        </div>
+                        <div class="product-card-info__name">
+                            Pink stockings with bows
+                        </div>
+                        <div class="product-card-info__price">
+                            10 000 RUB
+                        </div>
+                    </div>
+                    <div class="product-card-info__column">
+                        <div class="product-card-info__descr">
+                            <div class="product-card-info__titles">
+                                <div class="product-card-info__title">
+                                    Color <span>:</span>
+                                </div>
+                                pinck
+                            </div>
+                            <div class="product-card-info__buttons">
+                                <button type="button" style="background: #c9bfb6;"
+                                    class="product-card-info__button active"></button>
+                                <button type="button" style="background: #f1bdd4;"
+                                    class="product-card-info__button"></button>
+                            </div>
+                        </div>
+                        <div class="product-card-info__descr">
+                            <div class="product-card-info__titles">
+                                one size
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card-info__links">
+                        <a href="./" class="product-card-info__link">Details</a>
+                        <a href="./" class="product-card-info__link">Sizing</a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    {% include 'blocks/popups.njk' %}
+    {% include 'blocks/scripts.njk' %}
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Оформление заказа</title>
+    {% include 'blocks/head.njk' %}
+</head>
+
+<body class="preload mp">
+    <div class="main-wrapper-outer">
+        {% include 'blocks/header-black.njk' %}
+        <main class="main">
+
+            <div class="cart">
+                <div class="container">
+                    <div class="cart__content  d-flex position-relative">
+                        <div class="cart-details">
+                            <div class="cart-details__body d-flex flex-column">
+                                <div class="cart-details__title">
+                                    CHECKOUT
+                                </div>
+                                <form action="#">
+                                    <div class="form-column d-flex flex-column">
+                                        <div class="mb-3 mb-550-0">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="email" placeholder="Email"
+                                                data-required>
+                                        </div>
+                                        <div class="form-row mb-3">
+                                            <div>
+                                                <label for="first-name" class="form-label">First Name</label>
+                                                <input type="text" class="form-control" id="first-name"
+                                                    placeholder="First Name" data-required>
+                                            </div>
+                                            <div>
+                                                <label for="last-name" class="form-label">Last Name</label>
+                                                <input type="text" class="form-control" id="last-name"
+                                                    placeholder="Last Name" data-required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-subtitle text-uppercase mb-2">Address</div>
+                                    <div class="form-column d-flex flex-column mb-5 mb-md-5">
+                                        <div class="form-row">
+                                            <div>
+                                                <label for="city" class="form-label">City</label>
+                                                <input type="text" class="form-control" id="city" placeholder="City"
+                                                    data-required>
+                                            </div>
+                                            <div>
+                                                <label for="street" class="form-label">Street</label>
+                                                <input type="text" class="form-control" id="street" placeholder="Street"
+                                                    data-required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div>
+                                                <label for="house" class="form-label">House / Building</label>
+                                                <input type="text" class="form-control" id="house"
+                                                    placeholder="House / Building" data-required>
+                                            </div>
+                                            <div>
+                                                <label for="code" class="form-label">Postal Code</label>
+                                                <input type="text" class="form-control" id="code"
+                                                    placeholder="Postal Code" data-required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div>
+                                                <label for="phone" class="form-label">Phone Number</label>
+                                                <input type="text" class="form-control" id="phone"
+                                                    placeholder="+7 900 000 00 00" data-required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-bottom d-flex flex-column">
+                                        <button type="submit" class="btn-custom btn-brown w-100 disabled">CONTINUE TO
+                                            PAYMENT</button>
+                                        <a href="./" class="form-text text-center">
+                                            By proceeding, you agree to our Terms & Conditions
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="cart__body">
+                            <div class="cart__cards d-flex flex-column">
+                                <div class="card-cart d-flex gap-3">
+                                    <a href="./" class="card-cart__image">
+                                        <img loading="lazy" src="img/product1.webp" alt="">
+                                    </a>
+                                    <div class="card-cart__body d-flex flex-column justify-content-between">
+                                        <a href="./" class="card-cart__title">SUBTOTAL</a>
+                                        <div class="card-cart__item d-flex justify-content-between align-items-end">
+                                            <div class="card-cart__left d-flex flex-column">
+                                                <div class="card-cart__info small">Pink, One size
+                                                </div>
+                                                <div class="card-cart__price">10 000 RUS</div>
+                                            </div>
+                                            <div data-quantity
+                                                class="quantity d-flex align-items-center justify-content-center">
+                                                <button data-quantity-minus type="button"
+                                                    class="quantity__button quantity__button_minus d-flex align-items-center justify-content-center text-center text-uppercase">-</button>
+                                                <div class="quantity__input">
+                                                    <input data-quantity-value autocomplete="off" type="text"
+                                                        name="form[]" value="1" class="text-uppercase text-center">
+                                                </div>
+                                                <button data-quantity-plus type="button"
+                                                    class="quantity__button quantity__button_plus d-flex align-items-center justify-content-center text-center text-uppercase">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-cart d-flex gap-3">
+                                    <a href="./" class="card-cart__image">
+                                        <img loading="lazy" src="img/product1.webp" alt="">
+                                    </a>
+                                    <div class="card-cart__body d-flex flex-column justify-content-between">
+                                        <a href="./" class="card-cart__title">SUBTOTAL</a>
+                                        <div class="card-cart__item d-flex justify-content-between align-items-end">
+                                            <div class="card-cart__left d-flex flex-column">
+                                                <div class="card-cart__info small">Pink, One size
+                                                </div>
+                                                <div class="card-cart__price">10 000 RUS</div>
+                                            </div>
+                                            <div data-quantity
+                                                class="quantity d-flex align-items-center justify-content-center">
+                                                <button data-quantity-minus type="button"
+                                                    class="quantity__button quantity__button_minus d-flex align-items-center justify-content-center text-center text-uppercase">-</button>
+                                                <div class="quantity__input">
+                                                    <input data-quantity-value autocomplete="off" type="text"
+                                                        name="form[]" value="1" class="text-uppercase text-center">
+                                                </div>
+                                                <button data-quantity-plus type="button"
+                                                    class="quantity__button quantity__button_plus d-flex align-items-center justify-content-center text-center text-uppercase">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-cart d-flex gap-3">
+                                    <a href="./" class="card-cart__image">
+                                        <img loading="lazy" src="img/product1.webp" alt="">
+                                    </a>
+                                    <div class="card-cart__body d-flex flex-column justify-content-between">
+                                        <a href="./" class="card-cart__title">SUBTOTAL</a>
+                                        <div class="card-cart__item d-flex justify-content-between align-items-end">
+                                            <div class="card-cart__left d-flex flex-column">
+                                                <div class="card-cart__info small">Pink, One size
+                                                </div>
+                                                <div class="card-cart__price">10 000 RUS</div>
+                                            </div>
+                                            <div data-quantity
+                                                class="quantity d-flex align-items-center justify-content-center">
+                                                <button data-quantity-minus type="button"
+                                                    class="quantity__button quantity__button_minus d-flex align-items-center justify-content-center text-center text-uppercase">-</button>
+                                                <div class="quantity__input">
+                                                    <input data-quantity-value autocomplete="off" type="text"
+                                                        name="form[]" value="1" class="text-uppercase text-center">
+                                                </div>
+                                                <button data-quantity-plus type="button"
+                                                    class="quantity__button quantity__button_plus d-flex align-items-center justify-content-center text-center text-uppercase">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-cart d-flex gap-3">
+                                    <a href="./" class="card-cart__image">
+                                        <img loading="lazy" src="img/product1.webp" alt="">
+                                    </a>
+                                    <div class="card-cart__body d-flex flex-column justify-content-between">
+                                        <a href="./" class="card-cart__title">SUBTOTAL</a>
+                                        <div class="card-cart__item d-flex justify-content-between align-items-end">
+                                            <div class="card-cart__left d-flex flex-column">
+                                                <div class="card-cart__info small">Pink, One size
+                                                </div>
+                                                <div class="card-cart__price">10 000 RUS</div>
+                                            </div>
+                                            <div data-quantity
+                                                class="quantity d-flex align-items-center justify-content-center">
+                                                <button data-quantity-minus type="button"
+                                                    class="quantity__button quantity__button_minus d-flex align-items-center justify-content-center text-center text-uppercase">-</button>
+                                                <div class="quantity__input">
+                                                    <input data-quantity-value autocomplete="off" type="text"
+                                                        name="form[]" value="1" class="text-uppercase text-center">
+                                                </div>
+                                                <button data-quantity-plus type="button"
+                                                    class="quantity__button quantity__button_plus d-flex align-items-center justify-content-center text-center text-uppercase">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    {% include 'blocks/popups.njk' %}
+    {% include 'blocks/scripts.njk' %}
+</body>
+
+</html>
