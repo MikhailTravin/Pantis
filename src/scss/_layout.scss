@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     overflow: hidden;
   }
 }

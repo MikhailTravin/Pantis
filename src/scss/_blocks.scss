@@ -1,4 +1,5 @@
 .block-products {
+    overflow: hidden;
     &.main-products {
         height: 100vh;
         min-height: 600px;
@@ -238,6 +239,7 @@
 }
 
 .block-catalog-products {
+    overflow: hidden;
     padding: 70px 0px 58px 0px;
     @media (max-width: 992px) {
         padding: 45px 0px 50px 0px;
@@ -370,6 +372,7 @@
 }
 
 .block-video {
+    overflow: hidden;
     @media (max-width: 768px) {
         margin: 54px 0px 0px 0px;
     }
@@ -385,6 +388,7 @@
 }
 
 .block-menu {
+    overflow: hidden;
     padding: 87px 0px;
     @media (max-width: 768px) {
         min-height: 400px;
@@ -434,6 +438,7 @@
 }
 
 .cabinet {
+    overflow: hidden;
     background: var(--color);
     &.cabinet-main {
         min-height: 100vh;
@@ -699,6 +704,7 @@
 }
 
 .cart {
+    overflow: hidden;
     padding: 184px 0px 0px 0px;
     background: var(--color);
     &::after {
@@ -1002,6 +1008,7 @@
 }
 
 .order-confirmed {
+    overflow: hidden;
     background: var(--color);
     padding: 200px 0px;
     min-height: 100vh;
@@ -1050,7 +1057,6 @@
     position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    align-items: start;
     min-width: 0;
 
     @media (max-width: 600px) {
@@ -1082,6 +1088,30 @@
                 object-fit: cover;
             }
         }
+    }
+
+    // .product-card__gift
+
+    &__gift {
+        box-shadow: 16px 4px 50px 0 rgba(201, 191, 182, 0.4);
+        overflow: hidden;
+        font-family: var(--third-family);
+        font-weight: 400;
+        font-size: 534px;
+        line-height: 100%;
+        @media (max-width: 600px) {
+            box-shadow: none;
+        }
+    }
+
+    // .product-card__gift1
+
+    &__gift1 {
+    }
+
+    // .product-card__gift2
+
+    &__gift2 {
     }
 }
 .product-card-info {
@@ -1164,10 +1194,11 @@
         font-size: 11px;
         line-height: 158%;
         color: var(--color-black-solid);
-
+        gap: 10px 20px;
         @media (max-width: 768px) {
             font-size: 12px;
             line-height: 150%;
+            gap: 10px;
         }
     }
 
@@ -1247,6 +1278,7 @@
 }
 
 .catalog {
+    overflow: hidden;
     padding: 153px 0px 200px 0px;
 
     @media (max-width: 992px) {
