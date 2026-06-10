@@ -174,7 +174,7 @@ a {
       -ms-flex-align: stretch;
           align-items: stretch;
 }
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .main-wrapper-outer {
     overflow: hidden;
   }
@@ -805,6 +805,9 @@ a {
   opacity: 0.5;
 }
 
+.block-products {
+  overflow: hidden;
+}
 .block-products.main-products {
   height: 100vh;
   min-height: 600px;
@@ -1119,6 +1122,7 @@ a {
 }
 
 .block-catalog-products {
+  overflow: hidden;
   padding: 70px 0px 58px 0px;
 }
 @media (max-width: 992px) {
@@ -1270,6 +1274,9 @@ a {
   color: var(--fanciclub-com-silver-rust);
 }
 
+.block-video {
+  overflow: hidden;
+}
 @media (max-width: 768px) {
   .block-video {
     margin: 54px 0px 0px 0px;
@@ -1287,6 +1294,7 @@ a {
 }
 
 .block-menu {
+  overflow: hidden;
   padding: 87px 0px;
 }
 @media (max-width: 768px) {
@@ -1367,6 +1375,7 @@ a {
 }
 
 .cabinet {
+  overflow: hidden;
   background: var(--color);
 }
 .cabinet.cabinet-main {
@@ -1694,6 +1703,7 @@ a {
 }
 
 .cart {
+  overflow: hidden;
   padding: 184px 0px 0px 0px;
   background: var(--color);
 }
@@ -2021,6 +2031,7 @@ a {
 }
 
 .order-confirmed {
+  overflow: hidden;
   background: var(--color);
   padding: 200px 0px;
   min-height: 100vh;
@@ -2069,9 +2080,6 @@ a {
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
   min-width: 0;
 }
 @media (max-width: 600px) {
@@ -2105,7 +2113,21 @@ a {
        object-fit: cover;
   }
 }
-
+.product-card__gift {
+  -webkit-box-shadow: 16px 4px 50px 0 rgba(201, 191, 182, 0.4);
+          box-shadow: 16px 4px 50px 0 rgba(201, 191, 182, 0.4);
+  overflow: hidden;
+  font-family: var(--third-family);
+  font-weight: 400;
+  font-size: 534px;
+  line-height: 100%;
+}
+@media (max-width: 600px) {
+  .product-card__gift {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+}
 .product-card-info {
   position: sticky;
   top: 0;
@@ -2202,11 +2224,13 @@ a {
   font-size: 11px;
   line-height: 158%;
   color: var(--color-black-solid);
+  gap: 10px 20px;
 }
 @media (max-width: 768px) {
   .product-card-info__price {
     font-size: 12px;
     line-height: 150%;
+    gap: 10px;
   }
 }
 .product-card-info__descr {
@@ -2274,6 +2298,7 @@ a {
 }
 
 .catalog {
+  overflow: hidden;
   padding: 153px 0px 200px 0px;
 }
 @media (max-width: 992px) {
