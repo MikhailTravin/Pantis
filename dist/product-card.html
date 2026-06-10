@@ -32,7 +32,7 @@
 							<nav class="d-none d-lg-block">
 								<ul class="nav">
 									<li class="nav-item">
-										<div class="nav-link nav-link-click" href="./">SHOP</div>
+										<div class="nav-link nav-link-click">SHOP</div>
 										<div class="nav-item__dropdown">
 											<ul>
 												<li><a href="./">New In</a></li>
@@ -46,7 +46,7 @@
 										</div>
 									</li>
 									<li class="nav-item">
-										<div class="nav-link nav-link-click" href="./">WORLD</div>
+										<div class="nav-link nav-link-click">WORLD</div>
 										<div class="nav-item__dropdown">
 											<ul>
 												<li><a data-id="campaign" href="./" class="nav-link-click2">Campaign</a></li>
@@ -76,12 +76,12 @@
 							<div class="menu__body" id="mobileMenu">
 								<div class="accordion">
 									<div class="accordion-item">
-										<h2 class="accordion-header">
+										<div class="accordion-header">
 											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShop">
 												<span class="text-uppercase">SHOP</span>
 												<span class="accordion-arrow"></span>
 											</button>
-										</h2>
+										</div>
 										<div id="collapseShop" class="accordion-collapse collapse" data-bs-parent="#mobileMenu">
 											<div class="accordion-body">
 												<ul>
@@ -97,12 +97,12 @@
 										</div>
 									</div>
 									<div class="accordion-item">
-										<h2 class="accordion-header">
+										<div class="accordion-header">
 											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWorld">
 												<span class="text-uppercase">WORLD</span>
 												<span class="accordion-arrow"></span>
 											</button>
-										</h2>
+										</div>
 										<div id="collapseWorld" class="accordion-collapse collapse" data-bs-parent="#mobileMenu">
 											<div class="accordion-body">
 												<ul>
@@ -114,11 +114,11 @@
 										</div>
 									</div>
 									<div class="accordion-item">
-										<h2 class="accordion-header">
+										<div class="accordion-header">
 											<a href="./" class="accordion-button">
 												<span class="text-uppercase">ABOUT</span>
 											</a>
-										</h2>
+										</div>
 									</div>
 								</div>
 								<div data-id="accordion-campaign" class="accordion-dropdown">
@@ -431,51 +431,141 @@
 			</header>
 			<main class="main">
 
-				<div class="product-card">
-					<div class="product-card__images swiper">
-						<div class="product-card__image">
-							<img src="img/product1.webp" alt="">
+				<div class="product-card row g-0 w-100 container-fluid g-0 p-0 m-0">
+					<div class="col-12 col-md-6 p-0 w-100 min-width-0">
+						<div class="product-card__slider swiper w-100 h-100">
+							<div class="product-card__wrapper swiper-wrapper">
+								<div class="product-card__slide swiper-slide d-flex h-auto">
+									<img src="img/product1.webp" alt="" class="w-100 h-auto">
+								</div>
+								<div class="product-card__slide swiper-slide h-auto">
+									<img src="img/product5.webp" alt="" class="w-100 h-auto">
+								</div>
+								<div class="product-card__slide swiper-slide h-auto">
+									<img src="img/product6.webp" alt="" class="w-100 h-auto">
+								</div>
+								<div class="product-card__slide swiper-slide h-auto">
+									<img src="img/product7.webp" alt="" class="w-100 h-auto">
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="product-card-info">
-						<div class="product-card-info__column">
-							<div class="product-card-info__title">
-								stockings
-							</div>
-							<div class="product-card-info__name">
-								Pink stockings with bows
-							</div>
-							<div class="product-card-info__price">
-								10 000 RUB
-							</div>
-						</div>
-						<div class="product-card-info__column">
-							<div class="product-card-info__descr">
-								<div class="product-card-info__titles">
-									<div class="product-card-info__title">
-										Color <span>:</span>
+					<div class="col-12 col-md-6 p-0 w-100">
+						<div class="product-card-info">
+							<div class="product-card-info__body w-100 d-flex flex-column gap-4">
+								<div class="product-card-info__column d-flex flex-column">
+									<div class="product-card-info__title text-center text-uppercase">
+										stockings
 									</div>
-									pinck
+									<div class="product-card-info__name text-center text-uppercase">
+										Pink stockings with bows
+									</div>
+									<div class="product-card-info__price text-center">
+										10 000 RUB
+									</div>
 								</div>
-								<div class="product-card-info__buttons">
-									<button type="button" style="background: #c9bfb6;" class="product-card-info__button active"></button>
-									<button type="button" style="background: #f1bdd4;" class="product-card-info__button"></button>
+
+								<div class="product-card-info__column d-flex flex-column gap-3">
+									<div class="product-card-info__descr d-flex flex-column">
+										<div class="product-card-info__titles d-flex text-center text-uppercase gap-1 justify-content-center">
+											<div class="product-card-info__color-name">
+												Color <span>:</span>
+											</div>
+											<div class="product-card-info__color">
+												pink
+											</div>
+										</div>
+										<div class="product-card-info__buttons d-flex align-items-center justify-content-center gap-2">
+											<button type="button" data-color="white" style="background: #c9bfb6;" class="product-card-info__button btn p-0 rounded-circle"></button>
+											<button type="button" data-color="pink" style="background: #f1bdd4;" class="product-card-info__button btn p-0 rounded-circle active"></button>
+										</div>
+									</div>
+									<div class="product-card-info__descr">
+										<div class="product-card-info__titles text-center">
+											one size
+										</div>
+									</div>
+								</div>
+
+								<button type="button" class="btn-custom btn-silver-rust btn">Buy Now</button>
+
+								<div class="product-card-info__links d-flex flex-wrap align-items-center justify-content-center gap-3">
+									<a href="./">Details</a>
+									<a href="./">Sizing</a>
 								</div>
 							</div>
-							<div class="product-card-info__descr">
-								<div class="product-card-info__titles">
-									one size
-								</div>
-							</div>
-						</div>
-						<div class="product-card-info__links">
-							<a href="./" class="product-card-info__link">Details</a>
-							<a href="./" class="product-card-info__link">Sizing</a>
 						</div>
 					</div>
 				</div>
 
 			</main>
+			<footer class="footer">
+				<div class="container">
+					<div class="footer__content">
+						<div class="footer-top row">
+							<div class="footer-top__left col-md-6 col-lg-5">
+								<a href="./" class="footer-top__logo">
+									<img loading="lazy" src="img/icons/logo2.svg" alt="Logo">
+								</a>
+								<div class="footer-top__text text-uppercase">
+									Modern legwear for everyday dressing
+								</div>
+							</div>
+							<div class="footer-top__menu">
+								<div class="footer-top__menu-left">
+									<ul>
+										<li>
+											<a href="./">New In</a>
+										</li>
+										<li>
+											<a href="./">Socks</a>
+										</li>
+										<li>
+											<a href="./">Stockings</a>
+										</li>
+										<li>
+											<a href="./">Tights</a>
+										</li>
+										<li>
+											<a href="./">Sets</a>
+										</li>
+									</ul>
+									<ul>
+										<li>
+											<a href="./">Campaign</a>
+										</li>
+										<li>
+											<a href="./">Lookbook</a>
+										</li>
+										<li>
+											<a href="./">Styling</a>
+										</li>
+										<li>
+											<a href="./">Journal</a>
+										</li>
+									</ul>
+								</div>
+								<ul>
+									<li>
+										<a href="./">Shipping & Returns</a>
+									</li>
+									<li>
+										<a href="./">Contact</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="footer-bottom row">
+							<div class="footer-bottom__copy col-6">
+								© 2026 PANTIS
+							</div>
+							<div class="footer-bottom__link col-6">
+								<a href="./">Privacy Policy</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
 		</div>
 		<!-- Подписка на рассылку -->
 		<div class="modal fade" tabindex="-1" id="subscribe">
@@ -502,6 +592,32 @@
 				</div>
 			</div>
 		</div>
+		<!--Вызвать можно функцией
+
+// 1. В консоли браузера (для теста)
+showSubscribePopup();
+
+// 2. В любом месте кода
+showSubscribePopup();
+
+// 3. По клику на кнопку
+// <button data-bs-toggle="modal" data-bs-target="#subscribe"">Открыть подписку</button>
+
+// 4. Через setTimeout
+setTimeout(showSubscribePopup, 5000);
+
+// 5. При скролле
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 1000) {
+        showSubscribePopup();
+    }
+});
+
+// 6. При попытке уйти с сайта
+document.addEventListener('mouseleave', function() {
+    showSubscribePopup();
+});
+-->
 
 		<!-- Pop-up регистрация -->
 		<div class="modal fade" tabindex="-1" id="registration">
@@ -534,6 +650,7 @@
 				</div>
 			</div>
 		</div>
+		<script src="js/swiper-10.2.0.min.js"></script>
 		<script src="js/bootstrap.bundle.min.js"></script>
 		<script src="js/simplebar.min.js"></script>
 		<script src="js/scripts.js"></script>

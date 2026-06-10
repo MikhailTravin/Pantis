@@ -15,6 +15,29 @@ if (document.querySelector('.cards-slider') && typeof Swiper !== 'undefined') {
 
 }
 
+//Слайдер карточка товара
+function initSwiper() {
+    if (window.innerWidth <= 600 && document.querySelector('.product-card__slider') && typeof Swiper !== 'undefined') {
+        if (!document.querySelector('.product-card__slider').swiper) {
+            const swiperCatalog = new Swiper('.product-card__slider', {
+                observer: true,
+                observeParents: true,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                speed: 800,
+            });
+        }
+    }
+}
+initSwiper();
+let resizeTimer;
+window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        initSwiper();
+    }, 250);
+});
+
 // Поиск
 const searchContainer = document.querySelector('.header-search');
 if (searchContainer) {
@@ -1043,7 +1066,6 @@ if (buttonCard) {
 }
 
 //Прокрутка к блоку - личный кабинет
-// Функция для прокрутки на текущей странице
 let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
     const targetBlockElement = document.querySelector(targetBlock);
 
@@ -1106,16 +1128,13 @@ let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
     }
 };
 
-// Функция для прокрутки после загрузки страницы
 function scrollToElementOnLoad() {
-    // Проверяем, есть ли в URL хеш или параметр для прокрутки
     const urlParams = new URLSearchParams(window.location.search);
     const scrollTo = urlParams.get('scrollTo');
 
     if (scrollTo) {
         const targetBlock = document.querySelector(scrollTo);
         if (targetBlock) {
-            // Небольшая задержка для полной загрузки страницы
             setTimeout(() => {
                 const header = document.querySelector('header');
                 const headerHeight = header ? header.offsetHeight : 0;
@@ -1131,14 +1150,12 @@ function scrollToElementOnLoad() {
     }
 }
 
-// Вызываем прокрутку при загрузке страницы
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', scrollToElementOnLoad);
 } else {
     scrollToElementOnLoad();
 }
 
-// Обновленная функция навигации
 function pageNavigation() {
     document.addEventListener("click", pageNavigationAction);
 
@@ -1150,18 +1167,13 @@ function pageNavigation() {
             const gotoLinkSelector = gotoLink.dataset.goto || '';
             const href = gotoLink.getAttribute('href');
 
-            // Если ссылка ведет на другую страницу
             if (href && href !== '#' && !href.startsWith('#')) {
-                // Сохраняем селектор блока для прокрутки
                 sessionStorage.setItem('scrollToElement', gotoLinkSelector);
-
-                // Переходим по ссылке
                 window.location.href = href;
                 e.preventDefault();
                 return;
             }
 
-            // Если ссылка на текущей странице
             const noHeader = gotoLink.hasAttribute('data-goto-header');
             const gotoSpeed = gotoLink.dataset.gotoSpeed ? parseInt(gotoLink.dataset.gotoSpeed) : 500;
             const offsetTop = gotoLink.dataset.gotoTop ? parseInt(gotoLink.dataset.gotoTop) : 0;
@@ -1185,7 +1197,6 @@ function pageNavigation() {
     }
 }
 
-// Проверяем сохраненный элемент при загрузке страницы
 function checkForStoredScroll() {
     const scrollToSelector = sessionStorage.getItem('scrollToElement');
     if (scrollToSelector) {
@@ -1208,7 +1219,6 @@ function checkForStoredScroll() {
     }
 }
 
-// Запускаем проверку при загрузке
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', checkForStoredScroll);
 } else {
@@ -1216,3 +1226,89 @@ if (document.readyState === 'loading') {
 }
 
 pageNavigation();
+
+// Простая функция для показа попапа
+function showSubscribePopup() {
+    var modal = new bootstrap.Modal(document.getElementById('subscribe'));
+    modal.show();
+}
+
+//Показ попапа регистрации
+document.addEventListener('DOMContentLoaded', function() {
+    var DELAY_SECONDS = 7;        // Задержка в секундах (5-10)
+    var SCROLL_PERCENT = 30;      // Процент скролла для показа (30% страницы)
+    var COOKIE_NAME = 'popupShown'; // Название cookie, чтобы не показывать снова
+    var COOKIE_DAYS = 1;          // Не показывать 1 день (0 = каждый визит)
+    
+    var popup = document.getElementById('registration');
+    var isShown = false;
+    var delayTimer = null;
+    
+    function isPopupShownBefore() {
+        if (COOKIE_DAYS === 0) return false;
+        var match = document.cookie.match(new RegExp('(^| )' + COOKIE_NAME + '=([^;]+)'));
+        return match !== null;
+    }
+    
+    // Сохраняем в cookie, что попап показан
+    function markPopupAsShown() {
+        if (COOKIE_DAYS === 0) return;
+        var date = new Date();
+        date.setTime(date.getTime() + (COOKIE_DAYS * 24 * 60 * 60 * 1000));
+        document.cookie = COOKIE_NAME + '=1; expires=' + date.toUTCString() + '; path=/';
+    }
+    
+    function showPopup() {
+        if (isShown) return;
+        if (isPopupShownBefore()) return;
+        
+        isShown = true;
+        markPopupAsShown();
+        
+        if (delayTimer) clearTimeout(delayTimer);
+        window.removeEventListener('scroll', onScroll);
+        document.removeEventListener('mouseleave', onExitIntent);
+        
+        if (typeof bootstrap !== 'undefined') {
+            var bsPopup = new bootstrap.Modal(popup);
+            bsPopup.show();
+        } else {
+            $(popup).modal('show');
+        }
+    }
+    
+    // Триггер 1: Задержка по времени
+    delayTimer = setTimeout(function() {
+        if (!isShown && !isPopupShownBefore()) {
+            showPopup();
+        }
+    }, DELAY_SECONDS * 1000);
+    
+    // Триггер 2: Скролл
+    function onScroll() {
+        var scrollPercent = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+        if (scrollPercent >= SCROLL_PERCENT / 100) {
+            if (!isShown && !isPopupShownBefore()) {
+                showPopup();
+            }
+            window.removeEventListener('scroll', onScroll);
+        }
+    }
+    window.addEventListener('scroll', onScroll);
+    
+    // Триггер 3: Exit intent (только desktop)
+    function isDesktop() {
+        return window.innerWidth >= 1024;
+    }
+    
+    function onExitIntent(e) {
+        if (!isDesktop()) return;
+        if (e.clientY <= 0) { 
+            if (!isShown && !isPopupShownBefore()) {
+                showPopup();
+            }
+            document.removeEventListener('mouseleave', onExitIntent);
+        }
+    }
+    document.addEventListener('mouseleave', onExitIntent);
+});

@@ -2,7 +2,7 @@
 <html lang="ru">
 
 	<head>
-		<title>Главная</title>
+		<title>Каталог</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,11 +16,11 @@
 
 	<body class="preload mp">
 		<div class="main-wrapper-outer">
-			<header class="header fixed-top">
+			<header class="header fixed-top header-black">
 				<div class="container">
 					<div class="header__content d-flex align-items-center g-3 flex-nowrap p0">
 						<a href="./" class="header__logo">
-							<img src="img/icons/logo1.svg" alt="">
+							<img src="img/icons/logo2.svg" alt="">
 						</a>
 						<div class="menu">
 							<div class="header-button header-button-burger">
@@ -431,138 +431,137 @@
 			</header>
 			<main class="main">
 
-				<div class="block-products main-products row">
-					<a href="./" class="block-products__card card-shadow card2 col-12 p-0">
-						<img src="img/image1.webp" alt="NEW IN" class="block-products__pic desc">
-						<img src="img/image2.webp" alt="NEW IN" class="block-products__pic mob">
-						<div class="block-products__item">
-							<div class="block-products__text">
-								Cloth
-								<span class="text-uppercase">NEW IN</span>
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<div class="block-products row">
-					<a href="./" class="block-products__card card-shadow col-12 col-sm-6 p-0">
-						<img loading="lazy" src="img/image3.webp" alt="Socks" class="block-products__pic">
-						<div class="block-products__item">
-							<div class="block-products__text">
-								Cloth
-								<span class="text-uppercase">Socks</span>
-							</div>
-						</div>
-					</a>
-					<a href="./" class="block-products__card card-shadow col-12 col-sm-6 p-0">
-						<img loading="lazy" src="img/image4.webp" alt="Stockings" class="block-products__pic">
-						<div class="block-products__item">
-							<div class="block-products__text">
-								Cloth
-								<span class="text-uppercase">Stockings</span>
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<div class="block-catalog-products">
+				<div class="catalog">
 					<div class="container">
-						<div class="block-catalog-products__content">
-							<h2 class="title2 text-center">All</h2>
-							<div class="cards-slider swiper">
-								<div class="swiper-wrapper">
-									<div class="cards-slider__slide swiper-slide">
-										<a href="./" class="card-product h-100">
-											<img loading="lazy" src="img/product1.webp" alt="" class="card-product__pic1">
-											<div class="card-product__item">
-												<div class="card-product__name text-center">
-													Name
-												</div>
-												<div class="card-product__price text-center">
-													rub  480
-												</div>
-											</div>
-										</a>
+						<ul class="catalog-filter-nav d-flex flex-wrap align-items-center justify-content-center">
+							<li><a href="#" class="active">New In</a></li>
+							<li><a href="#">Socks</a></li>
+							<li><a href="#">Stockings</a></li>
+							<li><a href="#">Knee-Highs</a></li>
+							<li><a href="#">Tights</a></li>
+							<li><a href="#">Sets</a></li>
+							<li><a href="#">All</a></li>
+						</ul>
+						<div class="catalog-title text-center text-uppercase">
+							New In
+						</div>
+						<div class="catalog-filter">
+							<div class="d-flex justify-content-between w-100 gap-3">
+								<button class="catalog-filter__button p-0 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
+									Sort by
+								</button>
+								<button class="catalog-filter__button p-0 text-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
+									Color
+								</button>
+							</div>
+							<div class="collapse" id="collapseFilter" data-bs-parent=".catalog-filter">
+								<div class="catalog-filter__dropdown d-flex align-items-start g-3">
+									<div class="catalog-filter__nav d-flex flex-column">
+										<span data-sort="price-low">Price: Low to High</span>
+										<span data-sort="price-high">Price: High to Low</span>
+										<span data-sort="best">Best Selling</span>
+										<span data-sort="oldest">Oldest to Newest</span>
+										<span data-sort="newest">Newest to Oldest</span>
 									</div>
-									<div class="cards-slider__slide swiper-slide">
-										<a href="./" class="card-product h-100">
-											<img loading="lazy" src="img/product2.webp" alt="" class="card-product__pic1">
-											<div class="card-product__item">
-												<div class="card-product__name text-center">
-													Name
-												</div>
-												<div class="card-product__price text-center">
-													rub  480
-												</div>
-											</div>
-										</a>
-									</div>
-									<div class="cards-slider__slide swiper-slide">
-										<a href="./" class="card-product h-100">
-											<img loading="lazy" src="img/product3.webp" alt="" class="card-product__pic1">
-											<div class="card-product__item">
-												<div class="card-product__name text-center">
-													Name
-												</div>
-												<div class="card-product__price text-center">
-													rub  480
-												</div>
-											</div>
-										</a>
-									</div>
-									<div class="cards-slider__slide swiper-slide">
-										<a href="./" class="card-product h-100">
-											<img loading="lazy" src="img/product4.webp" alt="" class="card-product__pic1">
-											<div class="card-product__item">
-												<div class="card-product__name text-center">
-													Name
-												</div>
-												<div class="card-product__price text-center">
-													rub  480
-												</div>
-											</div>
-										</a>
+									<div class="catalog-filter__colors d-flex flex-wrap justify-content-end">
+										<span style="background-color: #2d2d2d;"></span>
+										<span style="background-color: #fff;"></span>
+										<span style="background-color: #3093cb;"></span>
+										<span style="background-color: #c8a887;"></span>
+										<span style="background-color: #bebebe;"></span>
+										<span style="background-color: #a1714c;"></span>
+										<span style="background-color: #35496a;"></span>
+										<span style="background-color: #d6d5c4;"></span>
+										<span style="background-color: #f00e32;"></span>
+										<span style="background-color: #fe729f;"></span>
+										<span style="background-color: #ffd200;"></span>
+										<span style="background-color: #ffbc57;"></span>
+										<span style="background-color: #ff7817;"></span>
+										<span style="background-color: #7d4a85;"></span>
+										<span style="background-color: #eb895c;"></span>
+										<span style="background-color: #f8d5ae;"></span>
 									</div>
 								</div>
 							</div>
-							<a href="./" class="btn-custom">See more</a>
+						</div>
+						<div class="catalog__body d-flex flex-column align-items-center">
+							<div class="catalog-cards w-100 row row-cols-2 row-cols-xl-3 w-100">
+								<div class="col">
+									<a href="#" class="card-product h-100">
+										<div class="card-product__image">
+											<img loading="lazy" src="img/product1.webp" alt="Product" class="card-product__pic1 pic-hover1">
+											<img loading="lazy" src="img/product2.webp" alt="Product hover" class="card-product__pic1 pic-hover2">
+										</div>
+										<div class="card-product__item">
+											<div class="card-product__name text-center">Name</div>
+											<div class="card-product__price text-center">rub 480</div>
+										</div>
+									</a>
+								</div>
+								<div class="col">
+									<a href="#" class="card-product h-100">
+										<div class="card-product__image">
+											<img loading="lazy" src="img/product1.webp" alt="Product" class="card-product__pic1 pic-hover1">
+											<img loading="lazy" src="img/product2.webp" alt="Product hover" class="card-product__pic1 pic-hover2">
+										</div>
+										<div class="card-product__item">
+											<div class="card-product__name text-center">Name</div>
+											<div class="card-product__price text-center">rub 480</div>
+										</div>
+									</a>
+								</div>
+								<div class="col">
+									<a href="#" class="card-product h-100">
+										<div class="card-product__image">
+											<img loading="lazy" src="img/product1.webp" alt="Product" class="card-product__pic1 pic-hover1">
+											<img loading="lazy" src="img/product2.webp" alt="Product hover" class="card-product__pic1 pic-hover2">
+										</div>
+										<div class="card-product__item">
+											<div class="card-product__name text-center">Name</div>
+											<div class="card-product__price text-center">rub 480</div>
+										</div>
+									</a>
+								</div>
+								<div class="col">
+									<a href="#" class="card-product h-100">
+										<div class="card-product__image">
+											<img loading="lazy" src="img/product1.webp" alt="Product" class="card-product__pic1 pic-hover1">
+											<img loading="lazy" src="img/product2.webp" alt="Product hover" class="card-product__pic1 pic-hover2">
+										</div>
+										<div class="card-product__item">
+											<div class="card-product__name text-center">Name</div>
+											<div class="card-product__price text-center">rub 480</div>
+										</div>
+									</a>
+								</div>
+								<div class="col">
+									<a href="#" class="card-product h-100">
+										<div class="card-product__image">
+											<img loading="lazy" src="img/product1.webp" alt="Product" class="card-product__pic1 pic-hover1">
+											<img loading="lazy" src="img/product2.webp" alt="Product hover" class="card-product__pic1 pic-hover2">
+										</div>
+										<div class="card-product__item">
+											<div class="card-product__name text-center">Name</div>
+											<div class="card-product__price text-center">rub 480</div>
+										</div>
+									</a>
+								</div>
+								<div class="col">
+									<a href="#" class="card-product h-100">
+										<div class="card-product__image">
+											<img loading="lazy" src="img/product1.webp" alt="Product" class="card-product__pic1 pic-hover1">
+											<img loading="lazy" src="img/product2.webp" alt="Product hover" class="card-product__pic1 pic-hover2">
+										</div>
+										<div class="card-product__item">
+											<div class="card-product__name text-center">Name</div>
+											<div class="card-product__price text-center">rub 480</div>
+										</div>
+									</a>
+								</div>
+							</div>
+							<button type="button" class="btn-custom">See more</button>
 						</div>
 					</div>
-				</div>
-
-				<div class="block-products row">
-					<a href="./" class="block-products__card card-shadow card2 col-12 p-0">
-						<img loading="lazy" src="img/image5.webp" alt="Sets" class="block-products__pic desc">
-						<img loading="lazy" src="img/image6.webp" alt="Sets" class="block-products__pic mob">
-						<div class="block-products__item">
-							<div class="block-products__text">
-								Cloth
-								<span class="text-uppercase">Sets</span>
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<div class="block-products row">
-					<a href="./" class="block-products__card card-shadow col-12 col-sm-6 p-0">
-						<img loading="lazy" src="img/image7.webp" alt="Knee-Highs" class="block-products__pic desc">
-						<img loading="lazy" src="img/image8.webp" alt="Knee-Highs" class="block-products__pic mob">
-						<div class="block-products__item">
-							<div class="block-products__text">
-								Cloth
-								<span class="text-uppercase">Knee-Highs</span>
-							</div>
-						</div>
-					</a>
-					<a href="./" class="block-products__card card-shadow col-12 col-sm-6 p-0">
-						<img loading="lazy" src="img/image9.webp" alt="Tights" class="block-products__pic">
-						<div class="block-products__item">
-							<div class="block-products__text">
-								Cloth
-								<span class="text-uppercase">Tights</span>
-							</div>
-						</div>
-					</a>
 				</div>
 
 			</main>
@@ -717,7 +716,6 @@ document.addEventListener('mouseleave', function() {
 				</div>
 			</div>
 		</div>
-		<script src="js/swiper-10.2.0.min.js"></script>
 		<script src="js/bootstrap.bundle.min.js"></script>
 		<script src="js/simplebar.min.js"></script>
 		<script src="js/scripts.js"></script>
