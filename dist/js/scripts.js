@@ -139,9 +139,9 @@ if (toggler) {
 
 //Меню десктоп
 const navLinks = document.querySelectorAll('.nav-link-click');
-const navLinks2 = document.querySelectorAll('.nav-link-click2');
-const navItems = document.querySelectorAll('.nav-item');
-if (navLinks.length || navLinks2.length) {
+if (navLinks) {
+    const navLinks2 = document.querySelectorAll('.nav-link-click2');
+    const navItems = document.querySelectorAll('.nav-item');
     function isDesktop() {
         return window.innerWidth >= 993;
     }
@@ -492,12 +492,10 @@ function formFieldsInit(options = { viewPass: true, autoHeight: false, checkSubm
         }
     }
 }
-
 formFieldsInit({
     viewPass: true,
     autoHeight: false
 });
-
 setTimeout(() => {
     if (typeof window.updateSubmitButtonState !== 'function') {
         window.updateSubmitButtonState = function (form) {
@@ -523,7 +521,6 @@ setTimeout(() => {
         };
     }
 }, 200);
-
 let formValidate = {
     getErrors(form) {
         let error = 0;
@@ -706,7 +703,6 @@ let formValidate = {
         return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
     }
 };
-
 function formSubmit() {
     const forms = document.forms;
     if (forms.length) {
@@ -791,9 +787,7 @@ function formSubmit() {
         formValidate.formClean(form);
     }
 }
-
 formSubmit();
-
 setTimeout(() => {
     const forms = document.forms;
     for (let form of forms) {
@@ -1039,14 +1033,186 @@ function formQuantity() {
 formQuantity();
 
 //Оплата
-// Находим кнопку и родительский контейнер
 const buttonCard = document.querySelector('.cart-details__button.button-card');
-const paymentsContainer = document.querySelector('.cart-details__payments');
+if (buttonCard) {
+    const paymentsContainer = document.querySelector('.cart-details__payments');
+    buttonCard.addEventListener('click', function (e) {
+        e.preventDefault();
+        paymentsContainer.classList.toggle('active');
+    });
+}
 
-// Добавляем обработчик клика
-buttonCard.addEventListener('click', function (e) {
-    e.preventDefault(); // Предотвращаем возможное действие по умолчанию
+//Прокрутка к блоку - личный кабинет
+// Функция для прокрутки на текущей странице
+let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
+    const targetBlockElement = document.querySelector(targetBlock);
 
-    // Переключаем класс active
-    paymentsContainer.classList.toggle('active');
-});
+    if (!targetBlockElement) {
+        console.warn(`Element ${targetBlock} not found`);
+        return;
+    }
+
+    let headerItem = '';
+    let headerItemHeight = 0;
+
+    if (noHeader) {
+        headerItem = 'header.header';
+        const headerElement = document.querySelector(headerItem);
+        if (headerElement) {
+            if (!headerElement.classList.contains('_header-scroll')) {
+                headerElement.style.cssText = `transition-duration: 0s;`;
+                headerElement.classList.add('_header-scroll');
+                headerItemHeight = headerElement.offsetHeight;
+                headerElement.classList.remove('_header-scroll');
+                setTimeout(() => {
+                    headerElement.style.cssText = ``;
+                }, 0);
+            } else {
+                headerItemHeight = headerElement.offsetHeight;
+            }
+        }
+    }
+
+    if (document.documentElement.classList.contains("menu-open")) {
+        if (typeof menuClose === 'function') {
+            menuClose();
+        }
+    }
+
+    if (typeof SmoothScroll !== 'undefined') {
+        let options = {
+            speedAsDuration: true,
+            speed: speed,
+            header: headerItem,
+            offset: offsetTop,
+            easing: 'easeOutQuad',
+        };
+        new SmoothScroll().animateScroll(targetBlockElement, '', options);
+    } else {
+        let targetBlockElementPosition = targetBlockElement.getBoundingClientRect().top + window.scrollY;
+
+        if (headerItemHeight) {
+            targetBlockElementPosition -= headerItemHeight;
+        }
+
+        if (offsetTop) {
+            targetBlockElementPosition -= offsetTop;
+        }
+
+        window.scrollTo({
+            top: targetBlockElementPosition,
+            behavior: "smooth"
+        });
+    }
+};
+
+// Функция для прокрутки после загрузки страницы
+function scrollToElementOnLoad() {
+    // Проверяем, есть ли в URL хеш или параметр для прокрутки
+    const urlParams = new URLSearchParams(window.location.search);
+    const scrollTo = urlParams.get('scrollTo');
+
+    if (scrollTo) {
+        const targetBlock = document.querySelector(scrollTo);
+        if (targetBlock) {
+            // Небольшая задержка для полной загрузки страницы
+            setTimeout(() => {
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                const targetPosition = targetBlock.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = targetPosition - headerHeight - 20;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }, 200);
+        }
+    }
+}
+
+// Вызываем прокрутку при загрузке страницы
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scrollToElementOnLoad);
+} else {
+    scrollToElementOnLoad();
+}
+
+// Обновленная функция навигации
+function pageNavigation() {
+    document.addEventListener("click", pageNavigationAction);
+
+    function pageNavigationAction(e) {
+        const targetElement = e.target;
+        const gotoLink = targetElement.closest('[data-goto]');
+
+        if (gotoLink) {
+            const gotoLinkSelector = gotoLink.dataset.goto || '';
+            const href = gotoLink.getAttribute('href');
+
+            // Если ссылка ведет на другую страницу
+            if (href && href !== '#' && !href.startsWith('#')) {
+                // Сохраняем селектор блока для прокрутки
+                sessionStorage.setItem('scrollToElement', gotoLinkSelector);
+
+                // Переходим по ссылке
+                window.location.href = href;
+                e.preventDefault();
+                return;
+            }
+
+            // Если ссылка на текущей странице
+            const noHeader = gotoLink.hasAttribute('data-goto-header');
+            const gotoSpeed = gotoLink.dataset.gotoSpeed ? parseInt(gotoLink.dataset.gotoSpeed) : 500;
+            const offsetTop = gotoLink.dataset.gotoTop ? parseInt(gotoLink.dataset.gotoTop) : 0;
+
+            if (window.modules_flsModules && modules_flsModules.fullpage) {
+                const fullpageSection = document.querySelector(`${gotoLinkSelector}`)?.closest('[data-fp-section]');
+                const fullpageSectionId = fullpageSection ? +fullpageSection.dataset.fpId : null;
+
+                if (fullpageSectionId !== null) {
+                    modules_flsModules.fullpage.switchingSection(fullpageSectionId);
+                    if (document.documentElement.classList.contains("menu-open") && typeof menuClose === 'function') {
+                        menuClose();
+                    }
+                }
+            } else {
+                gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+            }
+
+            e.preventDefault();
+        }
+    }
+}
+
+// Проверяем сохраненный элемент при загрузке страницы
+function checkForStoredScroll() {
+    const scrollToSelector = sessionStorage.getItem('scrollToElement');
+    if (scrollToSelector) {
+        sessionStorage.removeItem('scrollToElement');
+
+        const targetBlock = document.querySelector(scrollToSelector);
+        if (targetBlock) {
+            setTimeout(() => {
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                const targetPosition = targetBlock.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = targetPosition - headerHeight - 20;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }, 300);
+        }
+    }
+}
+
+// Запускаем проверку при загрузке
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', checkForStoredScroll);
+} else {
+    checkForStoredScroll();
+}
+
+pageNavigation();

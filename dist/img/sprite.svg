@@ -23,8 +23,8 @@
 <symbol id="account" viewBox="0 0 12 12">
   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7.5 1.5h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-2M5 8.5 7.5 6 5 3.5M7.5 6h-6"/>
 </symbol>
-<symbol id="arrow1" viewBox="0 0 20 17">
-  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8.25.75-7.5 7.5 7.5 7.5m-7.5-7.5h18"/>
+<symbol id="arrow1" viewBox="0 0 12 9">
+  <path d="m6.734 8.922-.859-.828 3.14-3.14.657-.485-.656-.5L5.875.829 6.735 0l4.312 4.438V4.5L6.734 8.922ZM0 5.016v-1.11h8.016l1.75.063v.984l-1.75.063H0Z"/>
 </symbol>
 <symbol id="bag" viewBox="0 0 12 12">
   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M3 1 1.5 3v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V3L9 1H3ZM1.5 3h9"/>

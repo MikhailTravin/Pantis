@@ -301,15 +301,10 @@
 
     &__pic1 {
         background: #fff;
-        height: 568px;
+        height: auto;
+        aspect-ratio: 3/4;
         width: 100%;
         object-fit: contain;
-        @media (max-width: 992px) {
-            height: 350px;
-        }
-        @media (max-width: 550px) {
-            height: 237px;
-        }
     }
 
     // .card-product__item
@@ -406,6 +401,175 @@
 
 .cabinet {
     background: var(--color);
+    &.cabinet-main {
+        min-height: 100vh;
+        padding: 231px 0px 0px 0px;
+        @media (max-width: 992px) {
+            gap: 20px;
+            padding: 120px 0px 50px 0px;
+        }
+    }
+    // .cabinet__content
+
+    &__content {
+        gap: 48px;
+        @media (max-width: 992px) {
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            gap: 0px;
+            flex-direction: column;
+        }
+    }
+
+    // .cabinet__body
+
+    &__body {
+        flex: 1 1 auto;
+        padding: 7px 0px 50px 0px;
+        max-height: calc(100vh - 227px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        @media (max-width: 1200px) {
+            flex-direction: column;
+            gap: 106px !important;
+        }
+        @media (max-width: 992px) {
+            flex: 0 0 50%;
+            max-height: calc(100vh - 120px);
+        }
+        @media (max-width: 768px) {
+            max-height: 100%;
+            flex: 0 1 auto;
+            padding: 0px 0px 0px 0px;
+        }
+        .cabinet-nav-link {
+            display: none;
+            @media (max-width: 768px) {
+                display: flex;
+                margin-bottom: -50px;
+            }
+        }
+    }
+
+    // .cabinet__logout
+
+    &__logout {
+        flex: 0 0 auto;
+        margin-right: 138px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+        transition: opacity 0.3s;
+        &:hover {
+            opacity: 0.7;
+        }
+        @media (max-width: 1400px) {
+            margin: 0px;
+        }
+        @media (max-width: 550px) {
+            font-size: 14px;
+            line-height: 129%;
+        }
+    }
+}
+.cabinet-nav {
+    flex: 0 0 400px;
+    padding: 0px 0px 50px 0px;
+    @media (max-width: 992px) {
+        flex: 0 0 50%;
+    }
+    @media (max-width: 768px) {
+        padding: 0px 0px 120px 0px;
+        flex: 0 1 auto;
+        min-height: calc(100vh - 120px);
+        justify-content: center;
+    }
+}
+.cabinet-nav-link {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 120%;
+    transition: opacity 0.3s;
+    &:hover {
+        opacity: 0.7;
+    }
+    @media (max-width: 389px) {
+        font-size: 30px;
+    }
+    &.active {
+        text-decoration: underline;
+        text-decoration-skip-ink: none;
+        pointer-events: none;
+    }
+}
+.cabinet-info {
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 80px 40px;
+    @media (max-width: 1200px) {
+        flex: 0 1 auto;
+        grid-template-columns: 1fr;
+        gap: 30px 40px;
+    }
+    // .cabinet-info__column
+
+    &__column {
+        gap: 10px;
+        a {
+            transition: opacity 0.3s;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+
+    // .cabinet-info__label
+
+    &__label {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+        color: rgba(56, 40, 25, 0.5);
+        @media (max-width: 768px) {
+            font-size: 16px;
+            line-height: 113%;
+        }
+    }
+
+    // .cabinet-info__title
+
+    &__title {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+        @media (max-width: 768px) {
+            font-size: 16px;
+            line-height: 113%;
+        }
+    }
+
+    // .cabinet-info__link
+
+    &__link {
+        width: fit-content;
+        gap: 2px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+        border-bottom: 1px solid var(--pantone-4-c);
+        transition: border-bottom 0.3s;
+        @media (max-width: 768px) {
+            font-size: 16px;
+            line-height: 113%;
+        }
+    }
 }
 .cabinet-auth {
     gap: 44px;
@@ -451,9 +615,8 @@
         align-items: center;
         transition: opacity 0.3s;
         svg {
-            fill: none;
-            color: var(--fanciclub-com-black);
-            stroke: var(--fanciclub-com-black);
+            transform: rotate(-180deg);
+            fill: var(--fanciclub-com-black);
         }
         &:hover {
             opacity: 0.7;

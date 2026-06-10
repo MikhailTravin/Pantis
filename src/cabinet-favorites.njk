@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Личный кабинет - избранное</title>
+    {% include 'blocks/head.njk' %}
+</head>
+
+<body class="preload mp">
+    <div class="main-wrapper-outer">
+        {% include 'blocks/header-black.njk' %}
+        <main class="main">
+
+            <div class="cabinet cabinet-main">
+                <div class="container">
+                    <div class="cabinet__content d-flex">
+                        <ul class="cabinet-nav d-flex flex-column gap-4">
+                            <li>
+                                <a href="cabinet-info.html" data-goto=".cabinet__body" data-goto-header
+                                    class="cabinet-nav-link text-uppercase">ABOUT
+                                    YOU</a>
+                            </li>
+                            <li>
+                                <a href="cabinet-favorites.html" data-goto=".cabinet__body" data-goto-header
+                                    class="cabinet-nav-link text-uppercase active">Favorites</a>
+                            </li>
+                            <li>
+                                <a href="cabinet-history.html" data-goto=".cabinet__body" data-goto-header
+                                    class="cabinet-nav-link text-uppercase">ORDER HISTORY</a>
+                            </li>
+                        </ul>
+                        <div class="cabinet__body d-flex align-items-start gap-5">
+                            <span class="cabinet-nav-link text-uppercase active">Favorites</span>
+                            <div class="cabinet-info">
+                                <div class="cabinet-info__column d-flex flex-column gap-3">
+                                    <div class="cabinet-info__title">You haven't placed any orders yet.</div>
+                                    <a href="./" class="cabinet-info__link d-flex align-items-center">
+                                        <span>Start Shopping</span>
+                                        <svg aria-hidden="true" width="12" height="9">
+                                            <use xlink:href="img/sprite.svg#arrow1"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    {% include 'blocks/popups.njk' %}
+    {% include 'blocks/scripts.njk' %}
+</body>
+
+</html>
