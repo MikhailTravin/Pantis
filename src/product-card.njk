@@ -11,55 +11,83 @@
         {% include 'blocks/header-black.njk' %}
         <main class="main">
 
-            <div class="product-card">
-                <div class="product-card__images swiper">
-                    <div class="product-card__image">
-                        <img src="img/product1.webp" alt="">
+            <div class="product-card row g-0 w-100 container-fluid g-0 p-0 m-0">
+                <div class="col-12 col-md-6 p-0 w-100 min-width-0">
+                    <div class="product-card__slider swiper w-100 h-100">
+                        <div class="product-card__wrapper swiper-wrapper">
+                            <div class="product-card__slide swiper-slide d-flex h-auto">
+                                <img src="img/product1.webp" alt="" class="w-100 h-auto">
+                            </div>
+                            <div class="product-card__slide swiper-slide h-auto">
+                                <img src="img/product5.webp" alt="" class="w-100 h-auto">
+                            </div>
+                            <div class="product-card__slide swiper-slide h-auto">
+                                <img src="img/product6.webp" alt="" class="w-100 h-auto">
+                            </div>
+                            <div class="product-card__slide swiper-slide h-auto">
+                                <img src="img/product7.webp" alt="" class="w-100 h-auto">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="product-card-info">
-                    <div class="product-card-info__column">
-                        <div class="product-card-info__title">
-                            stockings
-                        </div>
-                        <div class="product-card-info__name">
-                            Pink stockings with bows
-                        </div>
-                        <div class="product-card-info__price">
-                            10 000 RUB
-                        </div>
-                    </div>
-                    <div class="product-card-info__column">
-                        <div class="product-card-info__descr">
-                            <div class="product-card-info__titles">
-                                <div class="product-card-info__title">
-                                    Color <span>:</span>
+                <div class="col-12 col-md-6 p-0 w-100">
+                    <div class="product-card-info">
+                        <div class="product-card-info__body w-100 d-flex flex-column gap-4">
+                            <div class="product-card-info__column d-flex flex-column">
+                                <div class="product-card-info__title text-center text-uppercase">
+                                    stockings
                                 </div>
-                                pinck
+                                <div class="product-card-info__name text-center text-uppercase">
+                                    Pink stockings with bows
+                                </div>
+                                <div class="product-card-info__price text-center">
+                                    10 000 RUB
+                                </div>
                             </div>
-                            <div class="product-card-info__buttons">
-                                <button type="button" style="background: #c9bfb6;"
-                                    class="product-card-info__button active"></button>
-                                <button type="button" style="background: #f1bdd4;"
-                                    class="product-card-info__button"></button>
+
+                            <div class="product-card-info__column d-flex flex-column gap-3">
+                                <div class="product-card-info__descr d-flex flex-column">
+                                    <div
+                                        class="product-card-info__titles d-flex text-center text-uppercase gap-1 justify-content-center">
+                                        <div class="product-card-info__color-name">
+                                            Color <span>:</span>
+                                        </div>
+                                        <div class="product-card-info__color">
+                                            pink
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="product-card-info__buttons d-flex align-items-center justify-content-center gap-2">
+                                        <button type="button" data-color="white" style="background: #c9bfb6;"
+                                            class="product-card-info__button btn p-0 rounded-circle"></button>
+                                        <button type="button" data-color="pink" style="background: #f1bdd4;"
+                                            class="product-card-info__button btn p-0 rounded-circle active"></button>
+                                    </div>
+                                </div>
+                                <div class="product-card-info__descr">
+                                    <div class="product-card-info__titles text-center">
+                                        one size
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn-custom btn-silver-rust btn">Buy Now</button>
+
+                            <div
+                                class="product-card-info__links d-flex flex-wrap align-items-center justify-content-center gap-3">
+                                <a href="./">Details</a>
+                                <a href="./">Sizing</a>
                             </div>
                         </div>
-                        <div class="product-card-info__descr">
-                            <div class="product-card-info__titles">
-                                one size
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card-info__links">
-                        <a href="./" class="product-card-info__link">Details</a>
-                        <a href="./" class="product-card-info__link">Sizing</a>
                     </div>
                 </div>
             </div>
 
         </main>
+        {% include 'blocks/footer.njk' %}
     </div>
     {% include 'blocks/popups.njk' %}
+    <script src="js/swiper-10.2.0.min.js"></script>
     {% include 'blocks/scripts.njk' %}
 </body>
 

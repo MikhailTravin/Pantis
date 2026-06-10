@@ -24,6 +24,32 @@
         </div>
     </div>
 </div>
+<!--Вызвать можно функцией
+
+// 1. В консоли браузера (для теста)
+showSubscribePopup();
+
+// 2. В любом месте кода
+showSubscribePopup();
+
+// 3. По клику на кнопку
+// <button data-bs-toggle="modal" data-bs-target="#subscribe"">Открыть подписку</button>
+
+// 4. Через setTimeout
+setTimeout(showSubscribePopup, 5000);
+
+// 5. При скролле
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 1000) {
+        showSubscribePopup();
+    }
+});
+
+// 6. При попытке уйти с сайта
+document.addEventListener('mouseleave', function() {
+    showSubscribePopup();
+});
+-->
 
 <!-- Pop-up регистрация -->
 <div class="modal fade" tabindex="-1" id="registration">
