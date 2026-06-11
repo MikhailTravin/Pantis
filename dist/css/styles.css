@@ -2113,21 +2113,7 @@ a {
        object-fit: cover;
   }
 }
-.product-card__gift {
-  -webkit-box-shadow: 16px 4px 50px 0 rgba(201, 191, 182, 0.4);
-          box-shadow: 16px 4px 50px 0 rgba(201, 191, 182, 0.4);
-  overflow: hidden;
-  font-family: var(--third-family);
-  font-weight: 400;
-  font-size: 534px;
-  line-height: 100%;
-}
-@media (max-width: 600px) {
-  .product-card__gift {
-    -webkit-box-shadow: none;
-            box-shadow: none;
-  }
-}
+
 .product-card-info {
   position: sticky;
   top: 0;
