@@ -253,6 +253,8 @@
     // .header-search__content
 
     &__content {
+        display: flex;
+        flex-direction: column;
         position: fixed;
         right: -100%;
         width: 600px;
@@ -290,7 +292,7 @@
     // .header-search__body
 
     &__body {
-        height: 100%;
+        flex: 1 1 auto;
         background: var(--color);
     }
 
